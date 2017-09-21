@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"os"
 )
 
 func PrettyPrintJson(input []byte) {
@@ -18,6 +19,10 @@ func PrettyPrintJson(input []byte) {
 	}
 }
 
+func LoadCredentialsFromEnv() (string,string) {
+	return os.Getenv("DATACENTRED_ACCESS"), os.Getenv("DATACENTRED_SECRET")
+}
+
 func Request(verb string, path string) ([]byte, error) {
 	client := &http.Client{}
 
@@ -25,7 +30,8 @@ func Request(verb string, path string) ([]byte, error) {
 
 	req, _ := http.NewRequest(verb, url, nil)
 	req.Header.Add("Accept", "application/vnd.datacentred.api+json; version=1")
-	req.Header.Add("Authorization", "Token token=foo:bar")
+	access_key, secret_key := LoadCredentialsFromEnv()
+	req.Header.Add("Authorization", "Token token="+access_key+":"+secret_key)
 	req.Header.Add("Content-Type", "application/json")
 
 	resp, err := client.Do(req)

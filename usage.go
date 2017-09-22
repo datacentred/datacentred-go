@@ -64,8 +64,8 @@ type IpQuotaChange struct {
 }
 
 type ProjectIpsUsage struct {
-	CurrentQuota int `json:"current_quota"`
-	QuotaChanges []IpQuotaChange
+	CurrentQuota int             `json:"current_quota"`
+	QuotaChanges []IpQuotaChange `json:"quota_changes"`
 	Usage        []UsageBreakdown
 }
 

@@ -7,7 +7,7 @@ import (
 	"os"
 )
 
-func PrettyPrintJson(input []byte) {
+func prettyPrintJson(input []byte) {
 	var prettyJSON bytes.Buffer
 	err := json.Indent(&prettyJSON, input, "", "  ")
 	if err != nil {

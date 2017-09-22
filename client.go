@@ -13,16 +13,37 @@ import (
 type User struct {
 	Id        string
 	Email     string
-	FirstName string
-	LastName  string
-	CreatedAt string
-	UpdatedAt string
+	FirstName string `json:"first_name"`
+	LastName  string `json:"last_name"`
+	CreatedAt string `json:"created_at"`
+	UpdatedAt string `json:"updated_at"`
+	Password  string
 }
 
 type Project struct {
-	Id string
-	Name string
-	QuotaSet interface{}
+	Id       string
+	Name     string
+	QuotaSet struct {
+		Compute struct {
+			Cores    int
+			Instance int
+			Ram      int
+		}
+		Volume struct {
+			Gigabytes int
+			Snapshots int
+			Volumes   int
+		}
+		Network struct {
+			FloatingIp        int `json:"floating_ip"`
+			Network           int
+			Port              int
+			Router            int
+			SecurityGroup     int `json:"security_group"`
+			SecurityGroupRule int `json:"security_group_rule"`
+			Subnet            int
+		}
+	} `json:"quota_set"`
 	CreatedAt string
 	UpdatedAt string
 }
@@ -69,41 +90,41 @@ func Request(verb string, path string) ([]byte, error) {
 		return nil, err
 	}
 
-  fmt.Println(url)
+	fmt.Println(url)
 	fmt.Println(resp.StatusCode)
 
 	return resp_body, nil
 }
 
-func ListUsers() []interface{} {
+func ListUsers() []User {
 	data, err := Request("GET", "users")
 	if err != nil {
 		fmt.Errorf("Request failed: %s", err)
 		return nil
 	}
-	var res map[string][]interface{}
-  json.Unmarshal(data, &res)
-	return res["users"]
+	var res Users
+	json.Unmarshal(data, &res)
+	return res.Users
 }
 
-func ListProjects() []interface{} {
+func ListProjects() []Project {
 	data, err := Request("GET", "projects")
 	if err != nil {
 		fmt.Errorf("Request failed: %s", err)
 		return nil
 	}
-	var res map[string][]interface{}
-  json.Unmarshal(data, &res)
-	return res["projects"]
+	var res Projects
+	json.Unmarshal(data, &res)
+	return res.Projects
 }
 
 func ShowUsage(year int, month int) map[string]interface{} {
-	data, err := Request("GET", "usage/" + strconv.Itoa(year) + "/" + strconv.Itoa(month))
+	data, err := Request("GET", "usage/"+strconv.Itoa(year)+"/"+strconv.Itoa(month))
 	if err != nil {
 		fmt.Errorf("Request failed: %s", err)
 		return nil
 	}
 	var res map[string]interface{}
-  json.Unmarshal(data, &res)
+	json.Unmarshal(data, &res)
 	return res
 }

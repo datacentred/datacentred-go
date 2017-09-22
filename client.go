@@ -10,52 +10,6 @@ import (
 	"strconv"
 )
 
-type User struct {
-	Id        string
-	Email     string
-	FirstName string `json:"first_name"`
-	LastName  string `json:"last_name"`
-	CreatedAt string `json:"created_at"`
-	UpdatedAt string `json:"updated_at"`
-	Password  string
-}
-
-type Project struct {
-	Id       string
-	Name     string
-	QuotaSet struct {
-		Compute struct {
-			Cores    int
-			Instance int
-			Ram      int
-		}
-		Volume struct {
-			Gigabytes int
-			Snapshots int
-			Volumes   int
-		}
-		Network struct {
-			FloatingIp        int `json:"floating_ip"`
-			Network           int
-			Port              int
-			Router            int
-			SecurityGroup     int `json:"security_group"`
-			SecurityGroupRule int `json:"security_group_rule"`
-			Subnet            int
-		}
-	} `json:"quota_set"`
-	CreatedAt string
-	UpdatedAt string
-}
-
-type Users struct {
-	Users []User
-}
-
-type Projects struct {
-	Projects []Project
-}
-
 func PrettyPrintJson(input []byte) {
 	var prettyJSON bytes.Buffer
 	err := json.Indent(&prettyJSON, input, "", "  ")
@@ -102,7 +56,7 @@ func ListUsers() []User {
 		fmt.Errorf("Request failed: %s", err)
 		return nil
 	}
-	var res Users
+	var res UserResponse
 	json.Unmarshal(data, &res)
 	return res.Users
 }
@@ -113,9 +67,20 @@ func ListProjects() []Project {
 		fmt.Errorf("Request failed: %s", err)
 		return nil
 	}
-	var res Projects
+	var res ProjectResponse
 	json.Unmarshal(data, &res)
 	return res.Projects
+}
+
+func ListRoles() []Role {
+	data, err := Request("GET", "roles")
+	if err != nil {
+		fmt.Errorf("Request failed: %s", err)
+		return nil
+	}
+	var res RoleResponse
+	json.Unmarshal(data, &res)
+	return res.Roles
 }
 
 func ShowUsage(year int, month int) map[string]interface{} {

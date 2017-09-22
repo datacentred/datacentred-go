@@ -1,10 +1,22 @@
 package datacentred
 
 import (
+	"encoding/json"
+	"errors"
 	"fmt"
 	"io/ioutil"
 	"net/http"
 )
+
+type ApiError struct {
+	Detail   string
+	Field    string
+	Resource string
+}
+
+type ApiErrors struct {
+	Errors []ApiError
+}
 
 func Request(verb string, path string) ([]byte, error) {
 	client := &http.Client{}
@@ -28,6 +40,25 @@ func Request(verb string, path string) ([]byte, error) {
 
 	fmt.Println(url)
 	fmt.Println(resp.StatusCode)
+
+	switch resp.StatusCode {
+	case
+		200,
+		201,
+		204:
+		return resp_body, nil
+	case
+		401:
+		return nil, errors.New("Unauthorized: check your credentials")
+	case
+		404:
+		return nil, errors.New("Not found")
+	case
+		422:
+		var apiErrors ApiErrors
+		json.Unmarshal(resp_body, &apiErrors)
+		return nil, errors.New(apiErrors.Errors[0].Detail)
+	}
 
 	return resp_body, nil
 }

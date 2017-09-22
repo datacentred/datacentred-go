@@ -1,14 +1,9 @@
 package datacentred
 
-type User struct {
-	Id        string
-	Email     string
-	FirstName string `json:"first_name"`
-	LastName  string `json:"last_name"`
-	CreatedAt string `json:"created_at"`
-	UpdatedAt string `json:"updated_at"`
-	Password  string
-}
+import (
+	"encoding/json"
+	"fmt"
+)
 
 type Project struct {
 	Id       string
@@ -38,23 +33,17 @@ type Project struct {
 	UpdatedAt string `json:"updated_at"`
 }
 
-type Role struct {
-	Id          string
-	Name        string
-	Admin       bool
-	Permissions []string
-	CreatedAt   string `json:"created_at"`
-	UpdatedAt   string `json:"updated_at"`
-}
-
-type UserResponse struct {
-	Users []User
-}
-
 type ProjectResponse struct {
 	Projects []Project
 }
 
-type RoleResponse struct {
-	Roles []Role
+func ListProjects() []Project {
+	data, err := Request("GET", "projects")
+	if err != nil {
+		fmt.Errorf("Request failed: %s", err)
+		return nil
+	}
+	var res ProjectResponse
+	json.Unmarshal(data, &res)
+	return res.Projects
 }

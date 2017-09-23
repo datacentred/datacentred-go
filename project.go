@@ -62,3 +62,22 @@ func FindProject(Id string) Project {
 	json.Unmarshal(data, &res)
 	return res.Project
 }
+
+func CreateProject(Name string) Project {
+	jsonStr, _ := json.Marshal(map[string]string{"name": Name})
+	data, err := Request("POST", "projects", jsonStr)
+	if err != nil {
+		fmt.Errorf("Request failed: %s", err)
+	}
+	var res ProjectResponse
+	json.Unmarshal(data, &res)
+	return res.Project
+}
+
+func DestroyProject(Id string) bool {
+	_, err := Request("DELETE", "projects/"+Id, nil)
+	if err != nil {
+		fmt.Errorf("Request failed: %s", err)
+	}
+	return true
+}

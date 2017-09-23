@@ -1,10 +1,10 @@
 package datacentred
 
 import (
+	"bytes"
 	"encoding/json"
 	"errors"
 	"fmt"
-	"io"
 	"io/ioutil"
 	"net/http"
 )
@@ -19,16 +19,23 @@ type ApiErrors struct {
 	Errors []ApiError
 }
 
-func Request(verb string, path string, body io.Reader) ([]byte, error) {
-	client := &http.Client{}
+const ApiVersion = "1"
+const ContentType = "application/json"
+const AcceptType = "application/vnd.datacentred.api+json"
+const BaseUri = "https://my.datacentred.io/api/"
 
-	var url = "https://my.datacentred.io/api/" + path
+func Request(verb string, path string, body []byte) ([]byte, error) {
+	client := http.Client{}
 
-	req, _ := http.NewRequest(verb, url, body)
-	req.Header.Add("Accept", "application/vnd.datacentred.api+json; version=1")
+	var url = BaseUri + path
+
+	fmt.Println(bytes.NewBuffer(body))
+
+	req, _ := http.NewRequest(verb, url, bytes.NewBuffer(body))
+	req.Header.Add("Accept", AcceptType+"; version="+ApiVersion)
 	access_key, secret_key := loadCredentialsFromEnv()
 	req.Header.Add("Authorization", "Token token="+access_key+":"+secret_key)
-	req.Header.Add("Content-Type", "application/json")
+	req.Header.Add("Content-Type", ContentType)
 
 	resp, err := client.Do(req)
 	defer resp.Body.Close()
@@ -57,6 +64,7 @@ func Request(verb string, path string, body io.Reader) ([]byte, error) {
 		422:
 		var apiErrors ApiErrors
 		json.Unmarshal(resp_body, &apiErrors)
+		fmt.Println(apiErrors.Errors[0].Detail)
 		return nil, errors.New(apiErrors.Errors[0].Detail)
 	}
 

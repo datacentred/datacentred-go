@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"strconv"
+	"time"
 )
 
 type UsageBreakdown struct {
@@ -18,8 +19,8 @@ type UsageBreakdown struct {
 }
 
 type ProjectImagesUsage struct {
-	CreatedAt    string `json:"created_at"`
-	DeletedAt    string `json:"deleted_at"`
+	CreatedAt    time.Time `json:"created_at"`
+	DeletedAt    time.Time `json:"deleted_at"`
 	Id           string
 	LatestSizeGb float32 `json:"latest_size_gb"`
 	Name         string
@@ -31,7 +32,7 @@ type InstanceHistoryEntry struct {
 	Billable   bool
 	EventName  string `json:"event_name"`
 	Flavor     string
-	RecordedAt string `json:"recorded_at"`
+	RecordedAt time.Time `json:"recorded_at"`
 	Seconds    int
 	State      string
 	UserId     string `json:"user_id"`
@@ -46,8 +47,8 @@ type InstanceFlavor struct {
 }
 
 type ProjectInstancesUsage struct {
-	FirstBootedAt string `json:"first_booted_at"`
-	TerminatedAt  string `json:"terminated_at"`
+	FirstBootedAt time.Time `json:"first_booted_at"`
+	TerminatedAt  time.Time `json:"terminated_at"`
 	Id            string
 	Name          string
 	LatestState   string `json:"latest_state"`
@@ -60,7 +61,7 @@ type ProjectInstancesUsage struct {
 type IpQuotaChange struct {
 	Previous   int
 	Quota      int
-	RecordedAt string `json:"recorded_at"`
+	RecordedAt time.Time `json:"recorded_at"`
 }
 
 type ProjectIpsUsage struct {
@@ -73,14 +74,14 @@ type ProjectLoadBalancersUsage struct {
 	Id           string
 	Name         string
 	Owner        string
-	StartedAt    string `json:"started_at"`
-	TerminatedAt string `json:"terminated_at"`
+	StartedAt    time.Time `json:"started_at"`
+	TerminatedAt time.Time `json:"terminated_at"`
 	Usage        []UsageBreakdown
 }
 
 type ProjectVolumesUsage struct {
-	CreatedAt    string `json:"created_at"`
-	DeletedAt    string `json:"deleted_at"`
+	CreatedAt    time.Time `json:"created_at"`
+	DeletedAt    time.Time `json:"deleted_at"`
 	Id           string
 	LatestSizeGb int `json:"latest_size_gb"`
 	Name         string
@@ -93,8 +94,8 @@ type ProjectVpnsUsage struct {
 	Id           string
 	Name         string
 	Owner        string
-	StartedAt    string `json:"started_at"`
-	TerminatedAt string `json:"terminated_at"`
+	StartedAt    time.Time `json:"started_at"`
+	TerminatedAt time.Time `json:"terminated_at"`
 	Usage        []UsageBreakdown
 }
 
@@ -115,7 +116,7 @@ type ProjectUsage struct {
 }
 
 type UsageResponse struct {
-	LastUpdatedAt string `json:"last_updated_at"`
+	LastUpdatedAt time.Time `json:"last_updated_at"`
 	Projects      []ProjectUsage
 }
 

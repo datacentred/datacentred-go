@@ -3,6 +3,7 @@ package datacentred
 import (
 	"encoding/json"
 	"fmt"
+	"time"
 )
 
 type Project struct {
@@ -29,12 +30,16 @@ type Project struct {
 			Subnet            int
 		}
 	} `json:"quota_set"`
-	CreatedAt string `json:"created_at"`
-	UpdatedAt string `json:"updated_at"`
+	CreatedAt time.Time `json:"created_at"`
+	UpdatedAt time.Time `json:"updated_at"`
+}
+
+type ProjectsResponse struct {
+	Projects []Project
 }
 
 type ProjectResponse struct {
-	Projects []Project
+	Project Project
 }
 
 func ListProjects() []Project {
@@ -43,7 +48,17 @@ func ListProjects() []Project {
 		fmt.Errorf("Request failed: %s", err)
 		return nil
 	}
-	var res ProjectResponse
+	var res ProjectsResponse
 	json.Unmarshal(data, &res)
 	return res.Projects
+}
+
+func FindProject(Id string) Project {
+	data, err := Request("GET", "projects/"+Id)
+	if err != nil {
+		fmt.Errorf("Request failed: %s", err)
+	}
+	var res ProjectResponse
+	json.Unmarshal(data, &res)
+	return res.Project
 }

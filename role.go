@@ -3,6 +3,7 @@ package datacentred
 import (
 	"encoding/json"
 	"fmt"
+	"time"
 )
 
 type Role struct {
@@ -10,12 +11,16 @@ type Role struct {
 	Name        string
 	Admin       bool
 	Permissions []string
-	CreatedAt   string `json:"created_at"`
-	UpdatedAt   string `json:"updated_at"`
+	CreatedAt   time.Time `json:"created_at"`
+	UpdatedAt   time.Time `json:"updated_at"`
+}
+
+type RolesResponse struct {
+	Roles []Role
 }
 
 type RoleResponse struct {
-	Roles []Role
+	Role Role
 }
 
 func ListRoles() []Role {
@@ -24,7 +29,17 @@ func ListRoles() []Role {
 		fmt.Errorf("Request failed: %s", err)
 		return nil
 	}
-	var res RoleResponse
+	var res RolesResponse
 	json.Unmarshal(data, &res)
 	return res.Roles
+}
+
+func FindRole(Id string) Role {
+	data, err := Request("GET", "roles/"+Id)
+	if err != nil {
+		fmt.Errorf("Request failed: %s", err)
+	}
+	var res RoleResponse
+	json.Unmarshal(data, &res)
+	return res.Role
 }

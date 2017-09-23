@@ -31,13 +31,12 @@ func Request(verb string, path string, body io.Reader) ([]byte, error) {
 	req.Header.Add("Content-Type", "application/json")
 
 	resp, err := client.Do(req)
+	defer resp.Body.Close()
+
 	if err != nil {
-		return nil, err
+		panic(err)
 	}
-	resp_body, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
+	resp_body, _ := ioutil.ReadAll(resp.Body)
 
 	fmt.Println(url)
 	fmt.Println(resp.StatusCode)

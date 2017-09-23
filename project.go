@@ -43,7 +43,7 @@ type ProjectResponse struct {
 }
 
 func ListProjects() []Project {
-	data, err := Request("GET", "projects")
+	data, err := Request("GET", "projects", nil)
 	if err != nil {
 		fmt.Errorf("Request failed: %s", err)
 		return nil
@@ -54,7 +54,7 @@ func ListProjects() []Project {
 }
 
 func FindProject(Id string) Project {
-	data, err := Request("GET", "projects/"+Id)
+	data, err := Request("GET", "projects/"+Id, nil)
 	if err != nil {
 		fmt.Errorf("Request failed: %s", err)
 	}

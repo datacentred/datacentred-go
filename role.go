@@ -24,7 +24,7 @@ type RoleResponse struct {
 }
 
 func ListRoles() []Role {
-	data, err := Request("GET", "roles")
+	data, err := Request("GET", "roles", nil)
 	if err != nil {
 		fmt.Errorf("Request failed: %s", err)
 		return nil
@@ -35,7 +35,7 @@ func ListRoles() []Role {
 }
 
 func FindRole(Id string) Role {
-	data, err := Request("GET", "roles/"+Id)
+	data, err := Request("GET", "roles/"+Id, nil)
 	if err != nil {
 		fmt.Errorf("Request failed: %s", err)
 	}

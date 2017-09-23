@@ -24,7 +24,7 @@ type UserResponse struct {
 }
 
 func ListUsers() []User {
-	data, err := Request("GET", "users")
+	data, err := Request("GET", "users", nil)
 	if err != nil {
 		fmt.Errorf("Request failed: %s", err)
 		return nil
@@ -35,7 +35,7 @@ func ListUsers() []User {
 }
 
 func FindUser(Id string) User {
-	data, err := Request("GET", "users/"+Id)
+	data, err := Request("GET", "users/"+Id, nil)
 	if err != nil {
 		fmt.Errorf("Request failed: %s", err)
 	}

@@ -121,7 +121,7 @@ type UsageResponse struct {
 }
 
 func ShowUsage(year int, month int) UsageResponse {
-	data, err := Request("GET", "usage/"+strconv.Itoa(year)+"/"+strconv.Itoa(month))
+	data, err := Request("GET", "usage/"+strconv.Itoa(year)+"/"+strconv.Itoa(month), nil)
 	if err != nil {
 		fmt.Errorf("Request failed: %s", err)
 	}

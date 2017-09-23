@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"io"
 	"io/ioutil"
 	"net/http"
 )
@@ -18,12 +19,12 @@ type ApiErrors struct {
 	Errors []ApiError
 }
 
-func Request(verb string, path string) ([]byte, error) {
+func Request(verb string, path string, body io.Reader) ([]byte, error) {
 	client := &http.Client{}
 
 	var url = "https://my.datacentred.io/api/" + path
 
-	req, _ := http.NewRequest(verb, url, nil)
+	req, _ := http.NewRequest(verb, url, body)
 	req.Header.Add("Accept", "application/vnd.datacentred.api+json; version=1")
 	access_key, secret_key := loadCredentialsFromEnv()
 	req.Header.Add("Authorization", "Token token="+access_key+":"+secret_key)

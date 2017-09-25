@@ -24,8 +24,14 @@ const ContentType = "application/json"
 const AcceptType = "application/vnd.datacentred.api+json"
 const BaseUri = "https://my.datacentred.io/api/"
 
+type HttpConfig struct {
+	Client http.Client
+}
+
+var http_config = HttpConfig{Client: http.Client{}}
+
 func Request(verb string, path string, body []byte) ([]byte, error) {
-	client := http.Client{}
+	client := http_config.Client
 
 	var url = BaseUri + path
 

@@ -94,3 +94,30 @@ func DestroyProject(Id string) bool {
 	}
 	return true
 }
+
+func (p Project) Users() []User {
+	data, err := Request("GET", "projects/"+p.Id+"/users", nil)
+	if err != nil {
+		fmt.Errorf("Request failed: %s", err)
+		return nil
+	}
+	var res UsersResponse
+	json.Unmarshal(data, &res)
+	return res.Users
+}
+
+func (p Project) AddUser(UserId string) bool {
+	_, err := Request("PUT", "projects/"+p.Id+"/users/"+UserId, nil)
+	if err != nil {
+		fmt.Errorf("Request failed: %s", err)
+	}
+	return true
+}
+
+func (p Project) RemoveUser(UserId string) bool {
+	_, err := Request("DELETE", "projects/"+p.Id+"/users/"+UserId, nil)
+	if err != nil {
+		fmt.Errorf("Request failed: %s", err)
+	}
+	return true
+}

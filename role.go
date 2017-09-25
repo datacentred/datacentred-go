@@ -73,3 +73,30 @@ func DestroyRole(Id string) bool {
 	}
 	return true
 }
+
+func (r Role) Users() []User {
+	data, err := Request("GET", "roles/"+r.Id+"/users", nil)
+	if err != nil {
+		fmt.Errorf("Request failed: %s", err)
+		return nil
+	}
+	var res UsersResponse
+	json.Unmarshal(data, &res)
+	return res.Users
+}
+
+func (r Role) AddUser(UserId string) bool {
+	_, err := Request("PUT", "roles/"+r.Id+"/users/"+UserId, nil)
+	if err != nil {
+		fmt.Errorf("Request failed: %s", err)
+	}
+	return true
+}
+
+func (r Role) RemoveUser(UserId string) bool {
+	_, err := Request("DELETE", "roles/"+r.Id+"/users/"+UserId, nil)
+	if err != nil {
+		fmt.Errorf("Request failed: %s", err)
+	}
+	return true
+}

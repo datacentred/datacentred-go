@@ -52,7 +52,45 @@ TODO: add example code
 
 ### List all available users
 
+```go
+package main
+
+import (
+    "fmt"
+    "github.com/datacentred/datacentred-go"
+)
+
+func main() {
+    users := datacentred.ListUsers()
+    fmt.Printf("Number of users: %d\n", len(users))
+    for i := range users {
+        fmt.Printf("ID: %s, %s %s", users[i].Id, users[i].FirstName, users[i].LastName)
+    }
+
+}
+```
+
 ### Find a user by id
+
+```go
+func main() {
+    user := datacentred.FindUser("c165f2794d5941e78493275654572fd6")
+    fmt.Println(user.FirstName, user.LastName, user.Email)
+}
+```
+
+### Create a project
+
+```go
+func createproject(projectname string) string {
+    params := map[string]interface{}{
+        "name": projectname,
+    }
+
+    project := datacentred.CreateProject(params)
+    return project.Id
+}
+```
 
 ### Update a project
 

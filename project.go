@@ -8,9 +8,9 @@ import (
 
 type QuotaSet struct {
 	Compute struct {
-		Cores    int `json:"cores"`
+		Cores     int `json:"cores"`
 		Instances int `json:"instances"`
-		Ram      int `json:"ram"`
+		Ram       int `json:"ram"`
 	} `json:"compute"`
 	Volume struct {
 		Gigabytes int `json:"gigabytes"`
@@ -26,12 +26,12 @@ type QuotaSet struct {
 		SecurityGroupRule int `json:"security_group_rule"`
 		Subnet            int `json:"subnet"`
 	} `json:"network"`
-} 
+}
 
 type Project struct {
-	Id       string `json:"id"`
-	Name     string `json:"name"`
-	QuotaSet QuotaSet `json:"quota_set"`
+	Id        string    `json:"id"`
+	Name      string    `json:"name"`
+	QuotaSet  QuotaSet  `json:"quota_set"`
 	CreatedAt time.Time `json:"created_at"`
 	UpdatedAt time.Time `json:"updated_at"`
 }

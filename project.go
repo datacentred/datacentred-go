@@ -6,30 +6,32 @@ import (
 	"time"
 )
 
+type QuotaSet struct {
+	Compute struct {
+		Cores    int `json:"cores"`
+		Instances int `json:"instances"`
+		Ram      int `json:"ram"`
+	} `json:"compute"`
+	Volume struct {
+		Gigabytes int `json:"gigabytes"`
+		Snapshots int `json:"snapshots"`
+		Volumes   int `json:"volumes"`
+	} `json:"volume"`
+	Network struct {
+		FloatingIp        int `json:"floating_ip"`
+		Network           int `json:"network"`
+		Port              int `json:"port"`
+		Router            int `json:"router"`
+		SecurityGroup     int `json:"security_group"`
+		SecurityGroupRule int `json:"security_group_rule"`
+		Subnet            int `json:"subnet"`
+	} `json:"network"`
+} 
+
 type Project struct {
-	Id       string
-	Name     string
-	QuotaSet struct {
-		Compute struct {
-			Cores    int
-			Instance int
-			Ram      int
-		}
-		Volume struct {
-			Gigabytes int
-			Snapshots int
-			Volumes   int
-		}
-		Network struct {
-			FloatingIp        int `json:"floating_ip"`
-			Network           int
-			Port              int
-			Router            int
-			SecurityGroup     int `json:"security_group"`
-			SecurityGroupRule int `json:"security_group_rule"`
-			Subnet            int
-		}
-	} `json:"quota_set"`
+	Id       string `json:"id"`
+	Name     string `json:"name"`
+	QuotaSet QuotaSet `json:"quota_set"`
 	CreatedAt time.Time `json:"created_at"`
 	UpdatedAt time.Time `json:"updated_at"`
 }
@@ -63,9 +65,20 @@ func FindProject(Id string) Project {
 	return res.Project
 }
 
-func CreateProject(Name string) Project {
-	jsonStr, _ := json.Marshal(map[string]string{"name": Name})
+func CreateProject(Params interface{}) Project {
+	jsonStr, _ := json.Marshal(Params)
 	data, err := Request("POST", "projects", jsonStr)
+	if err != nil {
+		fmt.Errorf("Request failed: %s", err)
+	}
+	var res ProjectResponse
+	json.Unmarshal(data, &res)
+	return res.Project
+}
+
+func UpdateProject(Id string, Params interface{}) Project {
+	jsonStr, _ := json.Marshal(Params)
+	data, err := Request("PUT", "projects/"+Id, jsonStr)
 	if err != nil {
 		fmt.Errorf("Request failed: %s", err)
 	}

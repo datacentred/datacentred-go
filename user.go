@@ -7,13 +7,13 @@ import (
 )
 
 type User struct {
-	Id        string
-	Email     string
+	Id        string    `json:"id"`
+	Email     string    `json:"email"`
 	FirstName string    `json:"first_name"`
 	LastName  string    `json:"last_name"`
 	CreatedAt time.Time `json:"created_at"`
 	UpdatedAt time.Time `json:"updated_at"`
-	Password  string
+	Password  string    `json:"password"`
 }
 
 type UsersResponse struct {
@@ -42,4 +42,34 @@ func FindUser(Id string) User {
 	var res UserResponse
 	json.Unmarshal(data, &res)
 	return res.User
+}
+
+func CreateUser(Params interface{}) User {
+	jsonStr, _ := json.Marshal(Params)
+	data, err := Request("POST", "users", jsonStr)
+	if err != nil {
+		fmt.Errorf("Request failed: %s", err)
+	}
+	var res UserResponse
+	json.Unmarshal(data, &res)
+	return res.User
+}
+
+func UpdateUser(Id string, Params interface{}) User {
+	jsonStr, _ := json.Marshal(Params)
+	data, err := Request("PUT", "users/"+Id, jsonStr)
+	if err != nil {
+		fmt.Errorf("Request failed: %s", err)
+	}
+	var res UserResponse
+	json.Unmarshal(data, &res)
+	return res.User
+}
+
+func DestroyUser(Id string) bool {
+	_, err := Request("DELETE", "users/"+Id, nil)
+	if err != nil {
+		fmt.Errorf("Request failed: %s", err)
+	}
+	return true
 }

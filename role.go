@@ -7,10 +7,10 @@ import (
 )
 
 type Role struct {
-	Id          string
-	Name        string
-	Admin       bool
-	Permissions []string
+	Id          string    `json:"id"`
+	Name        string    `json:"name"`
+	Admin       bool      `json:"admin"`
+	Permissions []string  `json:"permissions"`
 	CreatedAt   time.Time `json:"created_at"`
 	UpdatedAt   time.Time `json:"updated_at"`
 }
@@ -42,4 +42,34 @@ func FindRole(Id string) Role {
 	var res RoleResponse
 	json.Unmarshal(data, &res)
 	return res.Role
+}
+
+func CreateRole(Params interface{}) Role {
+	jsonStr, _ := json.Marshal(Params)
+	data, err := Request("POST", "roles", jsonStr)
+	if err != nil {
+		fmt.Errorf("Request failed: %s", err)
+	}
+	var res RoleResponse
+	json.Unmarshal(data, &res)
+	return res.Role
+}
+
+func UpdateRole(Id string, Params interface{}) Role {
+	jsonStr, _ := json.Marshal(Params)
+	data, err := Request("PUT", "roles/"+Id, jsonStr)
+	if err != nil {
+		fmt.Errorf("Request failed: %s", err)
+	}
+	var res RoleResponse
+	json.Unmarshal(data, &res)
+	return res.Role
+}
+
+func DestroyRole(Id string) bool {
+	_, err := Request("DELETE", "roles/"+Id, nil)
+	if err != nil {
+		fmt.Errorf("Request failed: %s", err)
+	}
+	return true
 }

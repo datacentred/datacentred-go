@@ -23,7 +23,7 @@ type UserResponse struct {
 	User User
 }
 
-func ListUsers() []User {
+func Users() []User {
 	data, err := Request("GET", "users", nil)
 	if err != nil {
 		fmt.Errorf("Request failed: %s", err)

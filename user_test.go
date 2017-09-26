@@ -9,7 +9,7 @@ func TestFullUserLifeCycle(t *testing.T) {
 	r1 := initRecorder("fixtures/user_lifecycle1")
 	defer r1.Stop()
 
-	users := ListUsers()
+	users := Users()
 	usersCount := len(users)
 
 	firstUser := users[0]
@@ -37,7 +37,7 @@ func TestFullUserLifeCycle(t *testing.T) {
 	r3 := initRecorder("fixtures/user_lifecycle3")
 	defer r3.Stop()
 
-	assert.Equal(t, usersCount+1, len(ListUsers()), "they should be equal")
+	assert.Equal(t, usersCount+1, len(Users()), "they should be equal")
 
 	newUser.LastName = "Preston Esq."
 	newUser.Save()

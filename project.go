@@ -44,7 +44,7 @@ type ProjectResponse struct {
 	Project Project
 }
 
-func ListProjects() []Project {
+func Projects() []Project {
 	data, err := Request("GET", "projects", nil)
 	if err != nil {
 		fmt.Errorf("Request failed: %s", err)

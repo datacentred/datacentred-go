@@ -23,7 +23,7 @@ type RoleResponse struct {
 	Role Role
 }
 
-func ListRoles() []Role {
+func Roles() []Role {
 	data, err := Request("GET", "roles", nil)
 	if err != nil {
 		fmt.Errorf("Request failed: %s", err)

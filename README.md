@@ -54,7 +54,7 @@ datacentred.Config.SecretKey = "my_secret"
 ### List all available users
 
 ```go
-users := datacentred.ListUsers()
+users := datacentred.Users()
 fmt.Println(users)
 [{2bd21ee25cde40fdb9454954e4fbb4b5 bill.s.preston@esquire.com Bill Preston 2015-02-13 11:07:00 +0000 UTC 2017-09-26 09:11:38 +0000 UTC } {69a34c127dcb439fa9366762234687ac ted.theodore@logan.com Ted Logan 2014-08-22 14:32:31 +0000 UTC 2017-09-21 14:55:43 +0000 UTC }]
 ```
@@ -94,7 +94,7 @@ fmt.Println(role)
 ### Add a user to a role
 
 ```go
-user := datacentred.ListUsers()[0]
+user := datacentred.Users()[0]
 fmt.Println(role.AddUser(user.Id))
 true
 ```
@@ -102,7 +102,7 @@ true
 ### Remove a user from a project
 
 ```go
-user := datacentred.ListUsers()[0]
+user := datacentred.Users()[0]
 fmt.Println(project.RemoveUser(user.Id))
 true
 ```

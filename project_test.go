@@ -9,7 +9,7 @@ func TestFullProjectLifeCycle(t *testing.T) {
 	r := initRecorder("fixtures/project_lifecycle1")
 	defer r.Stop()
 
-	projects := ListProjects()
+	projects := Projects()
 	projectsCount := len(projects)
 
 	firstProject := projects[0]
@@ -34,7 +34,7 @@ func TestFullProjectLifeCycle(t *testing.T) {
 	r3 := initRecorder("fixtures/project_lifecycle3")
 	defer r3.Stop()
 
-	assert.Equal(t, projectsCount+1, len(ListProjects()), "they should be equal")
+	assert.Equal(t, projectsCount+1, len(Projects()), "they should be equal")
 
 	newProject.Name = "BattleOfTheBands"
 	newProject.Save()
@@ -44,7 +44,7 @@ func TestFullProjectLifeCycle(t *testing.T) {
 	usersCount := len(newProject.Users())
 	assert.Equal(t, 0, usersCount, "they should be equal")
 
-	firstUser := ListUsers()[0]
+	firstUser := Users()[0]
 
 	r4 := initRecorder("fixtures/project_lifecycle4")
 	defer r4.Stop()

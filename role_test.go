@@ -9,7 +9,7 @@ func TestFullRoleLifeCycle(t *testing.T) {
 	r := initRecorder("fixtures/role_lifecycle1")
 	defer r.Stop()
 
-	roles := ListRoles()
+	roles := Roles()
 	rolesCount := len(roles)
 
 	firstRole := roles[0]
@@ -34,7 +34,7 @@ func TestFullRoleLifeCycle(t *testing.T) {
 	r3 := initRecorder("fixtures/role_lifecycle3")
 	defer r3.Stop()
 
-	assert.Equal(t, rolesCount+1, len(ListRoles()), "they should be equal")
+	assert.Equal(t, rolesCount+1, len(Roles()), "they should be equal")
 
 	newRole.Name = "Wyld Stallyns Rock!"
 	newRole.Save()
@@ -44,7 +44,7 @@ func TestFullRoleLifeCycle(t *testing.T) {
 	usersCount := len(newRole.Users())
 	assert.Equal(t, 0, usersCount, "they should be equal")
 
-	firstUser := ListUsers()[0]
+	firstUser := Users()[0]
 
 	r4 := initRecorder("fixtures/role_lifecycle4")
 	defer r4.Stop()

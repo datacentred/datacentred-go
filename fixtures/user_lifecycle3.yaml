@@ -1,0 +1,168 @@
+---
+version: 1
+rwmutex: {}
+interactions:
+- request:
+    body: ""
+    form: {}
+    headers:
+      Accept:
+      - application/vnd.datacentred.api+json; version=1
+      Authorization:
+      - Token token=access_key:secret_key
+      Content-Type:
+      - application/json
+    url: https://my.datacentred.io/api/users
+    method: GET
+  response:
+    body: '{"users":[{"id":"2bd21ee25cde40fdb9454954e4fbb4b5","email":"sean.handley@gmail.com","first_name":"Sean","last_name":"Handley","created_at":"2015-02-13T11:07:00Z","updated_at":"2017-09-26T09:11:38Z","links":[{"href":"https://my.datacentred.io/api/users/2bd21ee25cde40fdb9454954e4fbb4b5","rel":"self"},{"href":"https://my.datacentred.io/api/v1/schemas/user","rel":"schema"}]},{"id":"69a34c127dcb439fa9366762234687ac","email":"sean.handley@datacentred.co.uk","first_name":"Sean","last_name":"Handley","created_at":"2014-08-22T14:32:31Z","updated_at":"2017-09-21T14:55:43Z","links":[{"href":"https://my.datacentred.io/api/users/69a34c127dcb439fa9366762234687ac","rel":"self"},{"href":"https://my.datacentred.io/api/v1/schemas/user","rel":"schema"}]},{"id":"06d823b97ed74254ac89e628a2e402bb","email":"bill.s.preston@esquire.com","first_name":"Bill
+      S.","last_name":"Preston","created_at":"2017-09-26T09:21:32Z","updated_at":"2017-09-26T09:21:32Z","links":[{"href":"https://my.datacentred.io/api/users/06d823b97ed74254ac89e628a2e402bb","rel":"self"},{"href":"https://my.datacentred.io/api/v1/schemas/user","rel":"schema"}]}]}'
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/vnd.datacentred.api+json; charset=utf-8
+      Date:
+      - Tue, 26 Sep 2017 09:21:33 GMT
+      Etag:
+      - W/"5f00d978238817a96cfc23705b8ef24a"
+      Server:
+      - nginx/1.10.3
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Api-Version:
+      - "1"
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Request-Id:
+      - 1bb4b453-eb2b-414f-b3f9-c6b2ff6a62ba
+      X-Runtime:
+      - "0.132054"
+      X-Xss-Protection:
+      - 1; mode=block
+    status: 200 OK
+    code: 200
+- request:
+    body: '{"id":"06d823b97ed74254ac89e628a2e402bb","email":"bill.s.preston@esquire.com","first_name":"Bill
+      S.","last_name":"Preston Esq.","created_at":"2017-09-26T09:21:32Z","updated_at":"2017-09-26T09:21:32Z","password":""}'
+    form: {}
+    headers:
+      Accept:
+      - application/vnd.datacentred.api+json; version=1
+      Authorization:
+      - Token token=access_key:secret_key
+      Content-Type:
+      - application/json
+    url: https://my.datacentred.io/api/users/06d823b97ed74254ac89e628a2e402bb
+    method: PUT
+  response:
+    body: '{"user":{"id":"06d823b97ed74254ac89e628a2e402bb","email":"bill.s.preston@esquire.com","first_name":"Bill
+      S.","last_name":"Preston Esq.","created_at":"2017-09-26T09:21:32Z","updated_at":"2017-09-26T09:21:34Z","links":[{"href":"https://my.datacentred.io/api/users/06d823b97ed74254ac89e628a2e402bb","rel":"self"},{"href":"https://my.datacentred.io/api/v1/schemas/user","rel":"schema"}]}}'
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/vnd.datacentred.api+json; charset=utf-8
+      Date:
+      - Tue, 26 Sep 2017 09:21:34 GMT
+      Etag:
+      - W/"9d2d5bfc89145353cc87e0b667e31b85"
+      Server:
+      - nginx/1.10.3
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Api-Version:
+      - "1"
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Request-Id:
+      - d21fbea1-68c9-416f-bc20-7080c257e8e3
+      X-Runtime:
+      - "0.362411"
+      X-Xss-Protection:
+      - 1; mode=block
+    status: 200 OK
+    code: 200
+- request:
+    body: ""
+    form: {}
+    headers:
+      Accept:
+      - application/vnd.datacentred.api+json; version=1
+      Authorization:
+      - Token token=access_key:secret_key
+      Content-Type:
+      - application/json
+    url: https://my.datacentred.io/api/users/06d823b97ed74254ac89e628a2e402bb
+    method: GET
+  response:
+    body: '{"user":{"id":"06d823b97ed74254ac89e628a2e402bb","email":"bill.s.preston@esquire.com","first_name":"Bill
+      S.","last_name":"Preston Esq.","created_at":"2017-09-26T09:21:32Z","updated_at":"2017-09-26T09:21:34Z","links":[{"href":"https://my.datacentred.io/api/users/06d823b97ed74254ac89e628a2e402bb","rel":"self"},{"href":"https://my.datacentred.io/api/v1/schemas/user","rel":"schema"}]}}'
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/vnd.datacentred.api+json; charset=utf-8
+      Date:
+      - Tue, 26 Sep 2017 09:21:34 GMT
+      Etag:
+      - W/"9d2d5bfc89145353cc87e0b667e31b85"
+      Server:
+      - nginx/1.10.3
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Api-Version:
+      - "1"
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Request-Id:
+      - bda66402-611b-446f-9b48-7772b5b7f24d
+      X-Runtime:
+      - "0.118959"
+      X-Xss-Protection:
+      - 1; mode=block
+    status: 200 OK
+    code: 200
+- request:
+    body: ""
+    form: {}
+    headers:
+      Accept:
+      - application/vnd.datacentred.api+json; version=1
+      Authorization:
+      - Token token=access_key:secret_key
+      Content-Type:
+      - application/json
+    url: https://my.datacentred.io/api/users/06d823b97ed74254ac89e628a2e402bb
+    method: DELETE
+  response:
+    body: ""
+    headers:
+      Cache-Control:
+      - no-cache
+      Date:
+      - Tue, 26 Sep 2017 09:21:36 GMT
+      Server:
+      - nginx/1.10.3
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Api-Version:
+      - "1"
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Request-Id:
+      - 63d64abb-2a7d-4a48-aad9-2c92f6fd340d
+      X-Runtime:
+      - "1.467168"
+      X-Xss-Protection:
+      - 1; mode=block
+    status: 204 No Content
+    code: 204

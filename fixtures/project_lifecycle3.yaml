@@ -1,0 +1,209 @@
+---
+version: 1
+rwmutex: {}
+interactions:
+- request:
+    body: ""
+    form: {}
+    headers:
+      Accept:
+      - application/vnd.datacentred.api+json; version=1
+      Authorization:
+      - Token token=access_key:secret_key
+      Content-Type:
+      - application/json
+    url: https://my.datacentred.io/api/projects
+    method: GET
+  response:
+    body: '{"projects":[{"id":"37033518a4514f12adeb8346ac3f188c","name":"seancentred","created_at":"2015-04-09T08:14:19Z","updated_at":"2016-12-08T11:44:05Z","quota_set":{"compute":{"instances":40,"cores":40,"ram":60000},"volume":{"volumes":5,"snapshots":10,"gigabytes":40},"network":{"floatingip":10,"router":10,"security_group_rule":100,"security_group":10,"network":10,"port":50,"subnet":10,"pool":10,"vip":10}},"links":[{"href":"https://my.datacentred.io/api/projects/37033518a4514f12adeb8346ac3f188c","rel":"self"},{"href":"https://my.datacentred.io/api/v1/schemas/project","rel":"schema"}]},{"id":"dde43efb79994d8d83d5c268cb89723d","name":"get_stacked","created_at":"2016-09-15T10:55:05Z","updated_at":"2016-12-15T09:06:22Z","quota_set":{"compute":{"instances":40,"cores":40,"ram":60000},"volume":{"volumes":5,"snapshots":10,"gigabytes":40},"network":{"floatingip":10,"router":10,"security_group_rule":100,"security_group":10,"network":10,"port":10,"subnet":10,"pool":10,"vip":10}},"links":[{"href":"https://my.datacentred.io/api/projects/dde43efb79994d8d83d5c268cb89723d","rel":"self"},{"href":"https://my.datacentred.io/api/v1/schemas/project","rel":"schema"}]},{"id":"43827cd6a5d243ec94927a73591f9651","name":"coa_training","created_at":"2017-02-08T10:45:29Z","updated_at":"2017-02-08T10:45:32Z","quota_set":{"compute":{"instances":10,"cores":10,"ram":60000},"volume":{"volumes":5,"snapshots":10,"gigabytes":40},"network":{"floatingip":5,"router":3,"security_group_rule":100,"security_group":10,"network":10,"port":10,"subnet":10,"pool":10,"vip":10}},"links":[{"href":"https://my.datacentred.io/api/projects/43827cd6a5d243ec94927a73591f9651","rel":"self"},{"href":"https://my.datacentred.io/api/v1/schemas/project","rel":"schema"}]},{"id":"3e516421b80a4b70aa816aef1dfd79fd","name":"wyld_stallyns","created_at":"2017-06-06T13:22:55Z","updated_at":"2017-06-06T13:32:42Z","quota_set":{"compute":{"instances":5,"cores":5,"ram":10240},"volume":{"volumes":4,"snapshots":4,"gigabytes":40},"network":{"floatingip":3,"router":1,"security_group_rule":100,"security_group":10,"network":10,"port":10,"subnet":10,"pool":10,"vip":10}},"links":[{"href":"https://my.datacentred.io/api/projects/3e516421b80a4b70aa816aef1dfd79fd","rel":"self"},{"href":"https://my.datacentred.io/api/v1/schemas/project","rel":"schema"}]},{"id":"6363f4cd79d7401d912f0c0b9a735f81","name":"danandjan","created_at":"2017-06-27T14:52:19Z","updated_at":"2017-06-27T18:52:38Z","quota_set":{"compute":{"instances":10,"cores":10,"ram":20240},"volume":{"volumes":4,"snapshots":4,"gigabytes":40},"network":{"floatingip":5,"router":5,"security_group_rule":100,"security_group":10,"network":10,"port":10,"subnet":10,"pool":10,"vip":10}},"links":[{"href":"https://my.datacentred.io/api/projects/6363f4cd79d7401d912f0c0b9a735f81","rel":"self"},{"href":"https://my.datacentred.io/api/v1/schemas/project","rel":"schema"}]},{"id":"dd7bfc05def9404784dab5f660f42d11","name":"fdsjkfdsjfaf","created_at":"2017-09-25T11:26:48Z","updated_at":"2017-09-25T11:47:40Z","quota_set":{"compute":{"instances":5,"cores":5,"ram":10240},"volume":{"volumes":4,"snapshots":4,"gigabytes":40},"network":{"floatingip":1,"router":1,"security_group_rule":100,"security_group":10,"network":10,"port":10,"subnet":10,"pool":10,"vip":10}},"links":[{"href":"https://my.datacentred.io/api/projects/dd7bfc05def9404784dab5f660f42d11","rel":"self"},{"href":"https://my.datacentred.io/api/v1/schemas/project","rel":"schema"}]},{"id":"5cc600fbc1fb435bb9f8f5c3200304cd","name":"SanDimasHigh","created_at":"2017-09-26T09:38:03Z","updated_at":"2017-09-26T09:38:03Z","quota_set":{"compute":{"instances":5,"cores":5,"ram":10240},"volume":{"volumes":4,"snapshots":4,"gigabytes":40},"network":{"floatingip":1,"router":1,"security_group_rule":100,"security_group":10,"network":10,"port":10,"subnet":10,"pool":10,"vip":10}},"links":[{"href":"https://my.datacentred.io/api/projects/5cc600fbc1fb435bb9f8f5c3200304cd","rel":"self"},{"href":"https://my.datacentred.io/api/v1/schemas/project","rel":"schema"}]}]}'
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/vnd.datacentred.api+json; charset=utf-8
+      Date:
+      - Tue, 26 Sep 2017 09:38:05 GMT
+      Etag:
+      - W/"b87d5bcde794120f3526249175a571e8"
+      Server:
+      - nginx/1.10.3
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Api-Version:
+      - "1"
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Request-Id:
+      - 2ac6c4ed-5716-45ba-b3fc-25db41a5439a
+      X-Runtime:
+      - "0.368551"
+      X-Xss-Protection:
+      - 1; mode=block
+    status: 200 OK
+    code: 200
+- request:
+    body: '{"id":"5cc600fbc1fb435bb9f8f5c3200304cd","name":"BattleOfTheBands","quota_set":{"compute":{"cores":5,"instances":5,"ram":10240},"volume":{"gigabytes":40,"snapshots":4,"volumes":4},"network":{"floating_ip":0,"network":10,"port":10,"router":1,"security_group":10,"security_group_rule":100,"subnet":10}},"created_at":"2017-09-26T09:38:03Z","updated_at":"2017-09-26T09:38:03Z"}'
+    form: {}
+    headers:
+      Accept:
+      - application/vnd.datacentred.api+json; version=1
+      Authorization:
+      - Token token=access_key:secret_key
+      Content-Type:
+      - application/json
+    url: https://my.datacentred.io/api/projects/5cc600fbc1fb435bb9f8f5c3200304cd
+    method: PUT
+  response:
+    body: '{"project":{"id":"5cc600fbc1fb435bb9f8f5c3200304cd","name":"BattleOfTheBands","created_at":"2017-09-26T09:38:03Z","updated_at":"2017-09-26T09:38:05Z","quota_set":{"compute":{"instances":5,"cores":5,"ram":10240},"volume":{"volumes":4,"snapshots":4,"gigabytes":40},"network":{"floatingip":1,"router":1,"security_group_rule":100,"security_group":10,"network":10,"port":10,"subnet":10,"pool":10,"vip":10}},"links":[{"href":"https://my.datacentred.io/api/projects/5cc600fbc1fb435bb9f8f5c3200304cd","rel":"self"},{"href":"https://my.datacentred.io/api/v1/schemas/project","rel":"schema"}]}}'
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/vnd.datacentred.api+json; charset=utf-8
+      Date:
+      - Tue, 26 Sep 2017 09:38:06 GMT
+      Etag:
+      - W/"e571a24cfc9fdc3bf538d46401de43d2"
+      Server:
+      - nginx/1.10.3
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Api-Version:
+      - "1"
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Request-Id:
+      - afd06a51-1d9b-47e7-8434-fbed9ff376ca
+      X-Runtime:
+      - "1.314886"
+      X-Xss-Protection:
+      - 1; mode=block
+    status: 200 OK
+    code: 200
+- request:
+    body: ""
+    form: {}
+    headers:
+      Accept:
+      - application/vnd.datacentred.api+json; version=1
+      Authorization:
+      - Token token=access_key:secret_key
+      Content-Type:
+      - application/json
+    url: https://my.datacentred.io/api/projects/5cc600fbc1fb435bb9f8f5c3200304cd
+    method: GET
+  response:
+    body: '{"project":{"id":"5cc600fbc1fb435bb9f8f5c3200304cd","name":"BattleOfTheBands","created_at":"2017-09-26T09:38:03Z","updated_at":"2017-09-26T09:38:05Z","quota_set":{"compute":{"instances":5,"cores":5,"ram":10240},"volume":{"volumes":4,"snapshots":4,"gigabytes":40},"network":{"floatingip":1,"router":1,"security_group_rule":100,"security_group":10,"network":10,"port":10,"subnet":10,"pool":10,"vip":10}},"links":[{"href":"https://my.datacentred.io/api/projects/5cc600fbc1fb435bb9f8f5c3200304cd","rel":"self"},{"href":"https://my.datacentred.io/api/v1/schemas/project","rel":"schema"}]}}'
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/vnd.datacentred.api+json; charset=utf-8
+      Date:
+      - Tue, 26 Sep 2017 09:38:06 GMT
+      Etag:
+      - W/"e571a24cfc9fdc3bf538d46401de43d2"
+      Server:
+      - nginx/1.10.3
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Api-Version:
+      - "1"
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Request-Id:
+      - 143be83d-4870-46d5-923e-14187976a507
+      X-Runtime:
+      - "0.122804"
+      X-Xss-Protection:
+      - 1; mode=block
+    status: 200 OK
+    code: 200
+- request:
+    body: ""
+    form: {}
+    headers:
+      Accept:
+      - application/vnd.datacentred.api+json; version=1
+      Authorization:
+      - Token token=access_key:secret_key
+      Content-Type:
+      - application/json
+    url: https://my.datacentred.io/api/projects/5cc600fbc1fb435bb9f8f5c3200304cd/users
+    method: GET
+  response:
+    body: '{"users":[]}'
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/vnd.datacentred.api+json; charset=utf-8
+      Date:
+      - Tue, 26 Sep 2017 09:38:07 GMT
+      Etag:
+      - W/"adac7b84dc3b7394d8385aa0c65fe27a"
+      Server:
+      - nginx/1.10.3
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Api-Version:
+      - "1"
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Request-Id:
+      - 76a39182-8ad8-41d7-9c63-35541f0f2f0c
+      X-Runtime:
+      - "0.136037"
+      X-Xss-Protection:
+      - 1; mode=block
+    status: 200 OK
+    code: 200
+- request:
+    body: ""
+    form: {}
+    headers:
+      Accept:
+      - application/vnd.datacentred.api+json; version=1
+      Authorization:
+      - Token token=access_key:secret_key
+      Content-Type:
+      - application/json
+    url: https://my.datacentred.io/api/users
+    method: GET
+  response:
+    body: '{"users":[{"id":"2bd21ee25cde40fdb9454954e4fbb4b5","email":"sean.handley@gmail.com","first_name":"Sean","last_name":"Handley","created_at":"2015-02-13T11:07:00Z","updated_at":"2017-09-26T09:11:38Z","links":[{"href":"https://my.datacentred.io/api/users/2bd21ee25cde40fdb9454954e4fbb4b5","rel":"self"},{"href":"https://my.datacentred.io/api/v1/schemas/user","rel":"schema"}]},{"id":"69a34c127dcb439fa9366762234687ac","email":"sean.handley@datacentred.co.uk","first_name":"Sean","last_name":"Handley","created_at":"2014-08-22T14:32:31Z","updated_at":"2017-09-21T14:55:43Z","links":[{"href":"https://my.datacentred.io/api/users/69a34c127dcb439fa9366762234687ac","rel":"self"},{"href":"https://my.datacentred.io/api/v1/schemas/user","rel":"schema"}]}]}'
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/vnd.datacentred.api+json; charset=utf-8
+      Date:
+      - Tue, 26 Sep 2017 09:38:07 GMT
+      Etag:
+      - W/"f855fe26babae4413565ed7b16a5f09f"
+      Server:
+      - nginx/1.10.3
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Api-Version:
+      - "1"
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Request-Id:
+      - bb25d216-4f08-4bdf-8b31-25811ea011fb
+      X-Runtime:
+      - "0.157485"
+      X-Xss-Protection:
+      - 1; mode=block
+    status: 200 OK
+    code: 200

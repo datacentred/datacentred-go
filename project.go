@@ -76,9 +76,9 @@ func CreateProject(Params interface{}) Project {
 	return res.Project
 }
 
-func UpdateProject(Id string, Params interface{}) Project {
-	jsonStr, _ := json.Marshal(Params)
-	data, err := Request("PUT", "projects/"+Id, jsonStr)
+func (p Project) Save() Project {
+	jsonStr, _ := json.Marshal(p)
+	data, err := Request("PUT", "projects/"+p.Id, jsonStr)
 	if err != nil {
 		fmt.Errorf("Request failed: %s", err)
 	}
@@ -87,8 +87,8 @@ func UpdateProject(Id string, Params interface{}) Project {
 	return res.Project
 }
 
-func DestroyProject(Id string) bool {
-	_, err := Request("DELETE", "projects/"+Id, nil)
+func (p Project) Destroy() bool {
+	_, err := Request("DELETE", "projects/"+p.Id, nil)
 	if err != nil {
 		fmt.Errorf("Request failed: %s", err)
 	}

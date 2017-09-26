@@ -10,19 +10,19 @@ import (
 type UsageBreakdown struct {
 	Cost struct {
 		Currency string
-		Rate     float32
-		Value    float32
+		Rate     float64
+		Value    float64
 	}
 	Meta  map[string]interface{}
 	Unit  string
-	Value float32
+	Value float64
 }
 
 type ProjectImagesUsage struct {
 	CreatedAt    time.Time `json:"created_at"`
 	DeletedAt    time.Time `json:"deleted_at"`
 	Id           string
-	LatestSizeGb float32 `json:"latest_size_gb"`
+	LatestSizeGb float64 `json:"latest_size_gb"`
 	Name         string
 	Owner        string
 	Usage        []UsageBreakdown

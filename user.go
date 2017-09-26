@@ -55,9 +55,9 @@ func CreateUser(Params interface{}) User {
 	return res.User
 }
 
-func UpdateUser(Id string, Params interface{}) User {
-	jsonStr, _ := json.Marshal(Params)
-	data, err := Request("PUT", "users/"+Id, jsonStr)
+func (u User) Save() User {
+	jsonStr, _ := json.Marshal(u)
+	data, err := Request("PUT", "users/"+u.Id, jsonStr)
 	if err != nil {
 		fmt.Errorf("Request failed: %s", err)
 	}
@@ -66,8 +66,8 @@ func UpdateUser(Id string, Params interface{}) User {
 	return res.User
 }
 
-func DestroyUser(Id string) bool {
-	_, err := Request("DELETE", "users/"+Id, nil)
+func (u User) Destroy() bool {
+	_, err := Request("DELETE", "users/"+u.Id, nil)
 	if err != nil {
 		fmt.Errorf("Request failed: %s", err)
 	}

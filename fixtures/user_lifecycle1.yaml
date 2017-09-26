@@ -1,0 +1,129 @@
+---
+version: 1
+rwmutex: {}
+interactions:
+- request:
+    body: ""
+    form: {}
+    headers:
+      Accept:
+      - application/vnd.datacentred.api+json; version=1
+      Authorization:
+      - Token token=access_key:secret_key
+      Content-Type:
+      - application/json
+    url: https://my.datacentred.io/api/users
+    method: GET
+  response:
+    body: '{"users":[{"id":"2bd21ee25cde40fdb9454954e4fbb4b5","email":"sean.handley@gmail.com","first_name":"Sean","last_name":"Handley","created_at":"2015-02-13T11:07:00Z","updated_at":"2017-09-26T09:11:38Z","links":[{"href":"https://my.datacentred.io/api/users/2bd21ee25cde40fdb9454954e4fbb4b5","rel":"self"},{"href":"https://my.datacentred.io/api/v1/schemas/user","rel":"schema"}]},{"id":"69a34c127dcb439fa9366762234687ac","email":"sean.handley@datacentred.co.uk","first_name":"Sean","last_name":"Handley","created_at":"2014-08-22T14:32:31Z","updated_at":"2017-09-21T14:55:43Z","links":[{"href":"https://my.datacentred.io/api/users/69a34c127dcb439fa9366762234687ac","rel":"self"},{"href":"https://my.datacentred.io/api/v1/schemas/user","rel":"schema"}]}]}'
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/vnd.datacentred.api+json; charset=utf-8
+      Date:
+      - Tue, 26 Sep 2017 09:21:31 GMT
+      Etag:
+      - W/"f855fe26babae4413565ed7b16a5f09f"
+      Server:
+      - nginx/1.10.3
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Api-Version:
+      - "1"
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Request-Id:
+      - 23821255-ebb6-47d3-956a-fd1329815386
+      X-Runtime:
+      - "0.239685"
+      X-Xss-Protection:
+      - 1; mode=block
+    status: 200 OK
+    code: 200
+- request:
+    body: ""
+    form: {}
+    headers:
+      Accept:
+      - application/vnd.datacentred.api+json; version=1
+      Authorization:
+      - Token token=access_key:secret_key
+      Content-Type:
+      - application/json
+    url: https://my.datacentred.io/api/users/2bd21ee25cde40fdb9454954e4fbb4b5
+    method: GET
+  response:
+    body: '{"user":{"id":"2bd21ee25cde40fdb9454954e4fbb4b5","email":"sean.handley@gmail.com","first_name":"Sean","last_name":"Handley","created_at":"2015-02-13T11:07:00Z","updated_at":"2017-09-26T09:11:38Z","links":[{"href":"https://my.datacentred.io/api/users/2bd21ee25cde40fdb9454954e4fbb4b5","rel":"self"},{"href":"https://my.datacentred.io/api/v1/schemas/user","rel":"schema"}]}}'
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/vnd.datacentred.api+json; charset=utf-8
+      Date:
+      - Tue, 26 Sep 2017 09:21:31 GMT
+      Etag:
+      - W/"e7fb7feb41f35804d001c5a06ab2f5b2"
+      Server:
+      - nginx/1.10.3
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Api-Version:
+      - "1"
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Request-Id:
+      - b81c3625-c6bb-49c5-90dd-0702260d3016
+      X-Runtime:
+      - "0.123969"
+      X-Xss-Protection:
+      - 1; mode=block
+    status: 200 OK
+    code: 200
+- request:
+    body: '{"user":{"email":"bill.s.preston@esquire.com","first_name":"Bill S.","last_name":"Preston","password":"Non
+      Heinous"}}'
+    form: {}
+    headers:
+      Accept:
+      - application/vnd.datacentred.api+json; version=1
+      Authorization:
+      - Token token=access_key:secret_key
+      Content-Type:
+      - application/json
+    url: https://my.datacentred.io/api/users
+    method: POST
+  response:
+    body: '{"user":{"id":"06d823b97ed74254ac89e628a2e402bb","email":"bill.s.preston@esquire.com","first_name":"Bill
+      S.","last_name":"Preston","created_at":"2017-09-26T09:21:32Z","updated_at":"2017-09-26T09:21:32Z","links":[{"href":"https://my.datacentred.io/api/users/06d823b97ed74254ac89e628a2e402bb","rel":"self"},{"href":"https://my.datacentred.io/api/v1/schemas/user","rel":"schema"}]}}'
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/vnd.datacentred.api+json; charset=utf-8
+      Date:
+      - Tue, 26 Sep 2017 09:21:33 GMT
+      Etag:
+      - W/"755ba0eacbcc2ac2e22d390700cf69f3"
+      Server:
+      - nginx/1.10.3
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Api-Version:
+      - "1"
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Request-Id:
+      - ea6f63f8-5800-4e6c-8da4-32f81a8e2735
+      X-Runtime:
+      - "1.878082"
+      X-Xss-Protection:
+      - 1; mode=block
+    status: 201 Created
+    code: 201

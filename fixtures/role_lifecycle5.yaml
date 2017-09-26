@@ -1,0 +1,82 @@
+---
+version: 1
+rwmutex: {}
+interactions:
+- request:
+    body: ""
+    form: {}
+    headers:
+      Accept:
+      - application/vnd.datacentred.api+json; version=1
+      Authorization:
+      - Token token=access_key:secret_key
+      Content-Type:
+      - application/json
+    url: https://my.datacentred.io/api/roles/5713b281-b9f7-41d7-bc8c-9eb92920d1d3/users
+    method: GET
+  response:
+    body: '{"users":[]}'
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/vnd.datacentred.api+json; charset=utf-8
+      Date:
+      - Tue, 26 Sep 2017 09:42:58 GMT
+      Etag:
+      - W/"adac7b84dc3b7394d8385aa0c65fe27a"
+      Server:
+      - nginx/1.10.3
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Api-Version:
+      - "1"
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Request-Id:
+      - 35832f80-7a33-4bed-b0ed-68aa22342e33
+      X-Runtime:
+      - "0.144237"
+      X-Xss-Protection:
+      - 1; mode=block
+    status: 200 OK
+    code: 200
+- request:
+    body: ""
+    form: {}
+    headers:
+      Accept:
+      - application/vnd.datacentred.api+json; version=1
+      Authorization:
+      - Token token=access_key:secret_key
+      Content-Type:
+      - application/json
+    url: https://my.datacentred.io/api/roles/5713b281-b9f7-41d7-bc8c-9eb92920d1d3
+    method: DELETE
+  response:
+    body: ""
+    headers:
+      Cache-Control:
+      - no-cache
+      Date:
+      - Tue, 26 Sep 2017 09:42:58 GMT
+      Server:
+      - nginx/1.10.3
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Api-Version:
+      - "1"
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Request-Id:
+      - c2e317ee-e408-4a27-a828-c6490ab6659b
+      X-Runtime:
+      - "0.167280"
+      X-Xss-Protection:
+      - 1; mode=block
+    status: 204 No Content
+    code: 204

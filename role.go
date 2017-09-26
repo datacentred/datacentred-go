@@ -55,9 +55,9 @@ func CreateRole(Params interface{}) Role {
 	return res.Role
 }
 
-func UpdateRole(Id string, Params interface{}) Role {
-	jsonStr, _ := json.Marshal(Params)
-	data, err := Request("PUT", "roles/"+Id, jsonStr)
+func (r Role) Save() Role {
+	jsonStr, _ := json.Marshal(r)
+	data, err := Request("PUT", "roles/"+r.Id, jsonStr)
 	if err != nil {
 		fmt.Errorf("Request failed: %s", err)
 	}
@@ -66,8 +66,8 @@ func UpdateRole(Id string, Params interface{}) Role {
 	return res.Role
 }
 
-func DestroyRole(Id string) bool {
-	_, err := Request("DELETE", "roles/"+Id, nil)
+func (r Role) Destroy() bool {
+	_, err := Request("DELETE", "roles/"+r.Id, nil)
 	if err != nil {
 		fmt.Errorf("Request failed: %s", err)
 	}

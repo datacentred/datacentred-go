@@ -4,7 +4,8 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"os"
+	"net/http"
+  "github.com/dnaeon/go-vcr/recorder"
 )
 
 func prettyPrintJson(input []byte) {
@@ -17,6 +18,15 @@ func prettyPrintJson(input []byte) {
 	}
 }
 
-func loadCredentialsFromEnv() (string, string) {
-	return os.Getenv("DATACENTRED_ACCESS"), os.Getenv("DATACENTRED_SECRET")
+func initRecorder(Name string) *recorder.Recorder {
+	r, err := recorder.New(Name)
+	if err != nil {
+    fmt.Errorf("Recorder failed: %s", err)
+  }
+  defer r.Stop()
+
+  Config.Client = http.Client{
+    Transport: r,
+  } 
+  return r
 }

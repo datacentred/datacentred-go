@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"os"
 	"io/ioutil"
 	"net/http"
 )
@@ -19,40 +20,38 @@ type ApiErrors struct {
 	Errors []ApiError
 }
 
-const ApiVersion = "1"
+const ApiVersion  = "1"
 const ContentType = "application/json"
-const AcceptType = "application/vnd.datacentred.api+json"
-const BaseUri = "https://my.datacentred.io/api/"
+const AcceptType  = "application/vnd.datacentred.api+json"
+const BaseUri     = "https://my.datacentred.io/api/"
 
-type HttpConfig struct {
+type Configuration struct {
 	Client http.Client
+	AccessKey string
+	SecretKey string
 }
 
-var http_config = HttpConfig{Client: http.Client{}}
+var Config = Configuration{
+	Client: http.Client{},
+	AccessKey: os.Getenv("DATACENTRED_ACCESS"),
+	SecretKey: os.Getenv("DATACENTRED_SECRET"),
+}
 
 func Request(verb string, path string, body []byte) ([]byte, error) {
-	client := http_config.Client
-
 	var url = BaseUri + path
-
-	fmt.Println(bytes.NewBuffer(body))
 
 	req, _ := http.NewRequest(verb, url, bytes.NewBuffer(body))
 	req.Header.Add("Accept", AcceptType+"; version="+ApiVersion)
-	access_key, secret_key := loadCredentialsFromEnv()
-	req.Header.Add("Authorization", "Token token="+access_key+":"+secret_key)
+	req.Header.Add("Authorization", "Token token="+Config.AccessKey+":"+Config.SecretKey)
 	req.Header.Add("Content-Type", ContentType)
 
-	resp, err := client.Do(req)
+	resp, err := Config.Client.Do(req)
 	defer resp.Body.Close()
 
 	if err != nil {
 		panic(err)
 	}
 	resp_body, _ := ioutil.ReadAll(resp.Body)
-
-	fmt.Println(url)
-	fmt.Println(resp.StatusCode)
 
 	switch resp.StatusCode {
 	case

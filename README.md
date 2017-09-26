@@ -35,34 +35,88 @@ To get started:
 
 ![API Credentials](https://user-images.githubusercontent.com/98526/30334767-79f4617c-97d8-11e7-962c-ec3115d13896.png)
 
-2. Set your credentials by exporting your access key and secret key as environment variables:
+2. Set your credentials by exporting your access key and secret key as environment variables in your shell:
 
 ```
 export DATACENTRED_ACCESS="my_access"
 export DATACENTRED_SECRET="my_secret"
 ```
 
-Or setting your keys manually using the following methods:
+Or set your keys manually using the following code:
 
 ```go
-TODO: add example code
+datacentred.Config.AccessKey = "my_access"
+datacentred.Config.SecretKey = "my_secret"
 ```
 
 ## Usage Examples
 
 ### List all available users
 
+```go
+users := datacentred.ListUsers()
+fmt.Println(users)
+[{2bd21ee25cde40fdb9454954e4fbb4b5 bill.s.preston@esquire.com Bill Preston 2015-02-13 11:07:00 +0000 UTC 2017-09-26 09:11:38 +0000 UTC } {69a34c127dcb439fa9366762234687ac ted.theodore@logan.com Ted Logan 2014-08-22 14:32:31 +0000 UTC 2017-09-21 14:55:43 +0000 UTC }]
+```
+
 ### Find a user by id
+
+```go
+user := datacentred.FindUser("2bd21ee25cde40fdb9454954e4fbb4b5")
+fmt.Println(user)
+{2bd21ee25cde40fdb9454954e4fbb4b5 bill.s.preston@esquire.com Bill Preston 2015-02-13 11:07:00 +0000 UTC 2017-09-26 09:11:38 +0000 UTC } 
+```
 
 ### Update a project
 
+```go
+project := datacentred.FindProject("37033518a4514f12adeb8346ac3f188c")
+project.QuotaSet.Compute.Instances = 50
+project.Save
+fmt.Println(project)
+[{37033518a4514f12adeb8346ac3f188c seancentred {{40 50 60000} {40 10 5} {0 10 50 10 10 100 10}} 2015-04-09 08:14:19 +0000 UTC 2016-12-08 11:44:05 +0000 UTC}
+```
+
 ### Create a role
+
+```go
+params := map[string]interface{}{
+  "role": map[string]interface{}{
+    "name": "Wyld Stallyns",
+  },
+}
+
+role := CreateRole(params)
+fmt.Println(role)
+{5713b281-b9f7-41d7-bc8c-9eb92920d1d3 Wyld Stallyns false [] 2017-09-26 09:42:56 +0000 UTC 2017-09-26 09:42:56 +0000 UTC}
+```
 
 ### Add a user to a role
 
+```go
+user := datacentred.ListUsers()[0]
+fmt.Println(role.AddUser(user.Id))
+true
+```
+
 ### Remove a user from a project
 
+```go
+user := datacentred.ListUsers()[0]
+fmt.Println(project.RemoveUser(user.Id))
+true
+```
+
 ### Get usage data for a given year and month
+
+
+```go
+usage := datacentred.ShowUsage()
+fmt.Println(usage.Projects[0].Usage.Instances[0].Usage.Value)
+744
+fmt.Println(usage.Projects[0].Usage.Instances[0].Usage.Unit)
+"hours"
+```
 
 ## Documentation
 

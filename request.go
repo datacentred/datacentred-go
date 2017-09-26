@@ -5,9 +5,9 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"os"
 	"io/ioutil"
 	"net/http"
+	"os"
 )
 
 type ApiError struct {
@@ -20,19 +20,19 @@ type ApiErrors struct {
 	Errors []ApiError
 }
 
-const ApiVersion  = "1"
+const ApiVersion = "1"
 const ContentType = "application/json"
-const AcceptType  = "application/vnd.datacentred.api+json"
-const BaseUri     = "https://my.datacentred.io/api/"
+const AcceptType = "application/vnd.datacentred.api+json"
+const BaseUri = "https://my.datacentred.io/api/"
 
 type Configuration struct {
-	Client http.Client
+	Client    http.Client
 	AccessKey string
 	SecretKey string
 }
 
 var Config = Configuration{
-	Client: http.Client{},
+	Client:    http.Client{},
 	AccessKey: os.Getenv("DATACENTRED_ACCESS"),
 	SecretKey: os.Getenv("DATACENTRED_SECRET"),
 }

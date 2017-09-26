@@ -4,8 +4,8 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+	"github.com/dnaeon/go-vcr/recorder"
 	"net/http"
-  "github.com/dnaeon/go-vcr/recorder"
 )
 
 func prettyPrintJson(input []byte) {
@@ -21,12 +21,12 @@ func prettyPrintJson(input []byte) {
 func initRecorder(Name string) *recorder.Recorder {
 	r, err := recorder.New(Name)
 	if err != nil {
-    fmt.Errorf("Recorder failed: %s", err)
-  }
-  defer r.Stop()
+		fmt.Errorf("Recorder failed: %s", err)
+	}
+	defer r.Stop()
 
-  Config.Client = http.Client{
-    Transport: r,
-  } 
-  return r
+	Config.Client = http.Client{
+		Transport: r,
+	}
+	return r
 }

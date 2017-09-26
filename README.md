@@ -6,6 +6,14 @@ Go client library for automating DataCentred account management.
 
 # Installation
 
+Run:
+
+```
+go get github.com/datacentred/datacentred-go
+```
+
+In your code:
+
 ```go
 import(
     "github.com/datacentred/datacentred-go"

@@ -43,7 +43,7 @@ type InstanceFlavor struct {
 	Name       string
 	RamMb      int `json:"ram_mb"`
 	RootDiskGb int `json:"root_disk_gb"`
-	VcpusCount int `json:vcpus_count"`
+	VcpusCount int `json:"vcpus_count"`
 }
 
 type ProjectInstancesUsage struct {

@@ -1,5 +1,7 @@
 ![Datacentred](https://assets-cdn.datacentred.io/assets/DC_Mono_B-903aac5ca4f5c6887193d880dbd1196deb8a978027eef5cb32de78b66d085935.png)
 
+[![CircleCI](https://circleci.com/gh/datacentred/datacentred-go.svg?style=svg)](https://circleci.com/gh/datacentred/datacentred-go) [![Go Report Card](https://goreportcard.com/badge/github.com/datacentred/datacentred-go)](https://goreportcard.com/report/github.com/datacentred/datacentred-go) [![GoDoc](https://godoc.org/github.com/datacentred/datacentred-go?status.svg)](https://godoc.org/github.com/datacentred/datacentred-go)
+
 Go client library for automating DataCentred account management.
 
 [www.datacentred.co.uk](https://www.datacentred.co.uk)

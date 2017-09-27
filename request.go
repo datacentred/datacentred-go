@@ -64,14 +64,14 @@ func Request(verb string, path string, body []byte) ([]byte, error) {
 	if err != nil {
 		panic(err)
 	}
-	resp_body, _ := ioutil.ReadAll(resp.Body)
+	respBody, _ := ioutil.ReadAll(resp.Body)
 
 	switch resp.StatusCode {
 	case
 		200,
 		201,
 		204:
-		return resp_body, nil
+		return respBody, nil
 	case
 		401:
 		return nil, errors.New("Unauthorized: check your credentials")
@@ -81,10 +81,10 @@ func Request(verb string, path string, body []byte) ([]byte, error) {
 	case
 		422:
 		var apiErrors apiErrorsResponse
-		json.Unmarshal(resp_body, &apiErrors)
+		json.Unmarshal(respBody, &apiErrors)
 		fmt.Println(apiErrors.Errors[0].Detail)
 		return nil, errors.New(apiErrors.Errors[0].Detail)
 	}
 
-	return resp_body, nil
+	return respBody, nil
 }

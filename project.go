@@ -37,11 +37,11 @@ type Project struct {
 }
 
 type ProjectsResponse struct {
-	Projects []Project
+	Projects []Project  `json:"projects"`
 }
 
 type ProjectResponse struct {
-	Project Project
+	Project Project  `json:"project"`
 }
 
 func Projects() []Project {

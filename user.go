@@ -17,10 +17,10 @@ type User struct {
 }
 
 type UsersResponse struct {
-	Users []User
+	Users []User  `json:"users"`
 }
 type UserResponse struct {
-	User User
+	User User  `json:"user"`
 }
 
 func Users() []User {

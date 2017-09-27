@@ -16,11 +16,11 @@ type Role struct {
 }
 
 type RolesResponse struct {
-	Roles []Role
+	Roles []Role  `json:"roles"`
 }
 
 type RoleResponse struct {
-	Role Role
+	Role Role  `json:"role"`
 }
 
 func Roles() []Role {

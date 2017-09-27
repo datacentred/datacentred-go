@@ -2,7 +2,6 @@ package datacentred
 
 import (
 	"encoding/json"
-	"fmt"
 	"time"
 )
 
@@ -27,77 +26,76 @@ type userResponse struct {
 }
 
 // Users is the collection of users belonging to the currently authenticated user's account.
-func Users() []User {
+func Users() ([]User, error) {
 	data, err := Request("GET", "users", nil)
 	if err != nil {
-		fmt.Errorf("Request failed: %s", err)
-		return nil
+		return nil, err
 	}
 	var res usersResponse
 	json.Unmarshal(data, &res)
-	return res.Users
+	return res.Users, nil
 }
 
 // FindUser locates a specific user by its unique ID.
-func FindUser(Id string) User {
+func FindUser(Id string) (*User, error) {
 	data, err := Request("GET", "users/"+Id, nil)
 	if err != nil {
-		fmt.Errorf("Request failed: %s", err)
+		return nil, err
 	}
 	var res userResponse
 	json.Unmarshal(data, &res)
-	return res.User
+	return &res.User, nil
 }
 
 // CreateUser creates a new user on the currently authenticated user's account.
 // A password must be specified to create a new user.
-func CreateUser(Params interface{}) User {
+func CreateUser(Params interface{}) (*User, error) {
 	user := map[string]interface{}{
 		"user": Params,
 	}
 	jsonStr, _ := json.Marshal(user)
 	data, err := Request("POST", "users", jsonStr)
 	if err != nil {
-		fmt.Errorf("Request failed: %s", err)
+		return nil, err
 	}
 	var res userResponse
 	json.Unmarshal(data, &res)
-	return res.User
+	return &res.User, nil
 }
 
 // Save commits any changes to this user's fields.
-func (u User) Save() User {
+func (u User) Save() (User, error) {
 	user := map[string]interface{}{
 		"user": u,
 	}
 	jsonStr, _ := json.Marshal(user)
 	data, err := Request("PUT", "users/"+u.Id, jsonStr)
 	if err != nil {
-		fmt.Errorf("Request failed: %s", err)
+		return u, err
 	}
 	var res userResponse
 	json.Unmarshal(data, &res)
-	return res.User
+	return res.User, nil
 }
 
 // Destroy permanently removes this user.
-func (u User) Destroy() bool {
+func (u User) Destroy() (bool, error) {
 	_, err := Request("DELETE", "users/"+u.Id, nil)
 	if err != nil {
-		fmt.Errorf("Request failed: %s", err)
+		return false, err
 	}
-	return true
+	return true, nil
 }
 
 // ChangePassword allows a new password to be set for this user.
-func (u User) ChangePassword(Password string) bool {
+func (u User) ChangePassword(Password string) (bool, error) {
 	user := map[string]interface{}{
 		"password": Password,
 	}
 	jsonStr, _ := json.Marshal(user)
 	_, err := Request("PUT", "users/"+u.Id, jsonStr)
 	if err != nil {
-		fmt.Errorf("Request failed: %s", err)
+		return false, err
 	}
-	return true
+	return true, nil
 }

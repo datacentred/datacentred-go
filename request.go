@@ -59,11 +59,13 @@ func Request(verb string, path string, body []byte) ([]byte, error) {
 	req.Header.Add("Content-Type", ContentType)
 
 	resp, err := Config.Client.Do(req)
-	defer resp.Body.Close()
-
+	
 	if err != nil {
 		panic(err)
 	}
+
+	defer resp.Body.Close()
+
 	respBody, _ := ioutil.ReadAll(resp.Body)
 
 	switch resp.StatusCode {

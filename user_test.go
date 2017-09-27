@@ -9,12 +9,13 @@ func TestFullUserLifeCycle(t *testing.T) {
 	r1 := initRecorder("fixtures/user_lifecycle1")
 	defer r1.Stop()
 
-	users := Users()
+	users, _ := Users()
 	usersCount := len(users)
 
 	firstUser := users[0]
 
-	assert.Equal(t, firstUser.Id, FindUser(firstUser.Id).Id, "they should be equal")
+  user, _ := FindUser(firstUser.Id)
+	assert.Equal(t, firstUser.Id, user.Id, "they should be equal")
 
 	params := map[string]string{
 		"email":      "bill.s.preston@esquire.com",
@@ -23,27 +24,31 @@ func TestFullUserLifeCycle(t *testing.T) {
 		"last_name":  "Preston",
 	}
 
-	newUser := CreateUser(params)
+	newUser, _ := CreateUser(params)
 
 	r2 := initRecorder("fixtures/user_lifecycle2")
 	defer r2.Stop()
 
-	assert.Equal(t, newUser.Id, FindUser(newUser.Id).Id, "they should be equal")
+  user, _ = FindUser(newUser.Id)
+	assert.Equal(t, newUser.Id, user.Id, "they should be equal")
 
 	assert.Equal(t, "Preston", newUser.LastName, "they should be equal")
 
 	r3 := initRecorder("fixtures/user_lifecycle3")
 	defer r3.Stop()
 
-	assert.Equal(t, usersCount+1, len(Users()), "they should be equal")
+  users, _ = Users()
+	assert.Equal(t, usersCount+1, len(users), "they should be equal")
 
 	newUser.LastName = "Preston Esq."
 	newUser.Save()
 
-	assert.Equal(t, "Preston Esq.", FindUser(newUser.Id).LastName, "they should be equal")
+  user, _ = FindUser(newUser.Id)
+	assert.Equal(t, "Preston Esq.", user.LastName, "they should be equal")
 
-	assert.Equal(t, true, newUser.ChangePassword("Excellent"), "they should be equal")
+  result, _ := newUser.ChangePassword("Excellent")
+	assert.Equal(t, true, result, "they should be equal")
 
-	result := newUser.Destroy()
+	result, _ = newUser.Destroy()
 	assert.Equal(t, true, result, "they should be equal")
 }

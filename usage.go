@@ -2,7 +2,6 @@ package datacentred
 
 import (
 	"encoding/json"
-	"fmt"
 	"strconv"
 	"time"
 )
@@ -136,12 +135,12 @@ type Usage struct {
 }
 
 // ShowUsage retrieves resource usage data for a given month belonging to the currently authenticated user's account.
-func ShowUsage(year int, month int) Usage {
+func ShowUsage(year int, month int) (*Usage, error) {
 	data, err := Request("GET", "usage/"+strconv.Itoa(year)+"/"+strconv.Itoa(month), nil)
 	if err != nil {
-		fmt.Errorf("Request failed: %s", err)
+		return nil, err
 	}
 	var res Usage
 	json.Unmarshal(data, &res)
-	return res
+	return &res, nil
 }

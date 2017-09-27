@@ -2,7 +2,6 @@ package datacentred
 
 import (
 	"encoding/json"
-	"fmt"
 	"time"
 )
 
@@ -50,94 +49,92 @@ type projectResponse struct {
 }
 
 // Projects is the collection of projects belonging to the currently authenticated user's account.
-func Projects() []Project {
+func Projects() ([]Project, error) {
 	data, err := Request("GET", "projects", nil)
 	if err != nil {
-		fmt.Errorf("Request failed: %s", err)
-		return nil
+		return nil, err
 	}
 	var res projectsResponse
 	json.Unmarshal(data, &res)
-	return res.Projects
+	return res.Projects, nil
 }
 
 // FindProject locates a specific project by its unique ID.
-func FindProject(Id string) Project {
+func FindProject(Id string) (*Project, error) {
 	data, err := Request("GET", "projects/"+Id, nil)
 	if err != nil {
-		fmt.Errorf("Request failed: %s", err)
+		return nil, err
 	}
 	var res projectResponse
 	json.Unmarshal(data, &res)
-	return res.Project
+	return &res.Project, nil
 }
 
 // CreateProject creates a new project on the currently authenticated user's account.
 // This may fail if the account is at its limit for projects.
-func CreateProject(Params interface{}) Project {
+func CreateProject(Params interface{}) (*Project, error) {
 	project := map[string]interface{}{
 		"project": Params,
 	}
 	jsonStr, _ := json.Marshal(project)
 	data, err := Request("POST", "projects", jsonStr)
 	if err != nil {
-		fmt.Errorf("Request failed: %s", err)
+		return nil, err
 	}
 	var res projectResponse
 	json.Unmarshal(data, &res)
-	return res.Project
+	return &res.Project, nil
 }
 
 // Save commits any changes to this project's fields.
-func (p Project) Save() Project {
+func (p Project) Save() (Project, error) {
 	project := map[string]interface{}{
 		"project": p,
 	}
 	jsonStr, _ := json.Marshal(project)
 	data, err := Request("PUT", "projects/"+p.Id, jsonStr)
 	if err != nil {
-		fmt.Errorf("Request failed: %s", err)
+		return p, err
 	}
 	var res projectResponse
 	json.Unmarshal(data, &res)
-	return res.Project
+	return res.Project, nil
 }
 
 // Destroy permanently removes this project.
-func (p Project) Destroy() bool {
+func (p Project) Destroy() (bool, error) {
 	_, err := Request("DELETE", "projects/"+p.Id, nil)
 	if err != nil {
-		fmt.Errorf("Request failed: %s", err)
+		return false, err
 	}
-	return true
+	return true, nil
 }
 
 // Users is the collection of users assigned to this project.
-func (p Project) Users() []User {
+func (p Project) Users() ([]User, error) {
 	data, err := Request("GET", "projects/"+p.Id+"/users", nil)
 	if err != nil {
-		fmt.Errorf("Request failed: %s", err)
-		return nil
+		return nil, err
 	}
 	var res usersResponse
 	json.Unmarshal(data, &res)
-	return res.Users
+	return res.Users, nil
 }
 
 // AddUser grants a user access to this project.
-func (p Project) AddUser(UserId string) bool {
+func (p Project) AddUser(UserId string) (bool, error) {
 	_, err := Request("PUT", "projects/"+p.Id+"/users/"+UserId, nil)
 	if err != nil {
-		fmt.Errorf("Request failed: %s", err)
+		return false, err
 	}
-	return true
+	return true, nil
 }
 
 // RemoveUser revokes a user's access to this project.
-func (p Project) RemoveUser(UserId string) bool {
+func (p Project) RemoveUser(UserId string) (bool, error) {
 	_, err := Request("DELETE", "projects/"+p.Id+"/users/"+UserId, nil)
 	if err != nil {
-		fmt.Errorf("Request failed: %s", err)
+		return false, err
 	}
-	return true
+	return true, nil
 }

@@ -2,8 +2,7 @@ package datacentred
 
 import (
 	"encoding/json"
-	"fmt"
-	"time"
+ 	"time"
 )
 
 // Role is a grouping structure for assigning account permissions to all
@@ -26,93 +25,91 @@ type roleResponse struct {
 }
 
 // Roles is the collection of roles belonging to the currently authenticated user's account.
-func Roles() []Role {
+func Roles() ([]Role, error) {
 	data, err := Request("GET", "roles", nil)
 	if err != nil {
-		fmt.Errorf("Request failed: %s", err)
-		return nil
+		return nil, err
 	}
 	var res rolesResponse
 	json.Unmarshal(data, &res)
-	return res.Roles
+	return res.Roles, nil
 }
 
 // FindRole locates a specific role by its unique ID.
-func FindRole(Id string) Role {
+func FindRole(Id string) (*Role, error) {
 	data, err := Request("GET", "roles/"+Id, nil)
 	if err != nil {
-		fmt.Errorf("Request failed: %s", err)
+		return nil, err
 	}
 	var res roleResponse
 	json.Unmarshal(data, &res)
-	return res.Role
+	return &res.Role, nil
 }
 
 // CreateRole creates a new role on the currently authenticated user's account.
-func CreateRole(Params interface{}) Role {
+func CreateRole(Params interface{}) (*Role, error) {
 	role := map[string]interface{}{
 		"role": Params,
 	}
 	jsonStr, _ := json.Marshal(role)
 	data, err := Request("POST", "roles", jsonStr)
 	if err != nil {
-		fmt.Errorf("Request failed: %s", err)
+		return nil, err
 	}
 	var res roleResponse
 	json.Unmarshal(data, &res)
-	return res.Role
+	return &res.Role, nil
 }
 
 // Save commits any changes to this role's fields.
-func (r Role) Save() Role {
+func (r Role) Save() (Role, error) {
 	role := map[string]interface{}{
 		"role": r,
 	}
 	jsonStr, _ := json.Marshal(role)
 	data, err := Request("PUT", "roles/"+r.Id, jsonStr)
 	if err != nil {
-		fmt.Errorf("Request failed: %s", err)
+		return r, err
 	}
 	var res roleResponse
 	json.Unmarshal(data, &res)
-	return res.Role
+	return res.Role, nil
 }
 
 // Destroy permanently removes this role.
-func (r Role) Destroy() bool {
+func (r Role) Destroy() (bool, error) {
 	_, err := Request("DELETE", "roles/"+r.Id, nil)
 	if err != nil {
-		fmt.Errorf("Request failed: %s", err)
+		return false, err
 	}
-	return true
+	return true, nil
 }
 
 // Users is the collection of users assigned to this role.
-func (r Role) Users() []User {
+func (r Role) Users() ([]User, error) {
 	data, err := Request("GET", "roles/"+r.Id+"/users", nil)
 	if err != nil {
-		fmt.Errorf("Request failed: %s", err)
-		return nil
+		return nil, err
 	}
 	var res usersResponse
 	json.Unmarshal(data, &res)
-	return res.Users
+	return res.Users, nil
 }
 
 // AddUser assigns a user to this role, granting them the role's permissions.
-func (r Role) AddUser(UserId string) bool {
+func (r Role) AddUser(UserId string) (bool, error) {
 	_, err := Request("PUT", "roles/"+r.Id+"/users/"+UserId, nil)
 	if err != nil {
-		fmt.Errorf("Request failed: %s", err)
+		return false, err
 	}
-	return true
+	return true, nil
 }
 
 // RemoveUser removes a user from this role, revoking the role's permissions.
-func (r Role) RemoveUser(UserId string) bool {
+func (r Role) RemoveUser(UserId string) (bool, error) {
 	_, err := Request("DELETE", "roles/"+r.Id+"/users/"+UserId, nil)
 	if err != nil {
-		fmt.Errorf("Request failed: %s", err)
+		return false, err
 	}
-	return true
+	return true, nil
 }

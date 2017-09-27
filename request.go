@@ -59,7 +59,7 @@ func Request(verb string, path string, body []byte) ([]byte, error) {
 	req.Header.Add("Content-Type", ContentType)
 
 	resp, err := Config.Client.Do(req)
-	
+
 	if err != nil {
 		panic(err)
 	}

@@ -14,7 +14,7 @@ func TestFullProjectLifeCycle(t *testing.T) {
 
 	firstProject := projects[0]
 
-  p, _ := FindProject(firstProject.Id)
+	p, _ := FindProject(firstProject.Id)
 	assert.Equal(t, firstProject.Id, p.Id, "they should be equal")
 
 	params := map[string]string{
@@ -26,7 +26,7 @@ func TestFullProjectLifeCycle(t *testing.T) {
 	r2 := initRecorder("fixtures/project_lifecycle2")
 	defer r2.Stop()
 
-  p, _ = FindProject(newProject.Id)
+	p, _ = FindProject(newProject.Id)
 	assert.Equal(t, newProject.Id, p.Id, "they should be equal")
 
 	assert.Equal(t, "SanDimasHigh", newProject.Name, "they should be equal")
@@ -41,7 +41,7 @@ func TestFullProjectLifeCycle(t *testing.T) {
 	newProject.Name = "BattleOfTheBands"
 	newProject.Save()
 
-  p, _ = FindProject(newProject.Id)
+	p, _ = FindProject(newProject.Id)
 	assert.Equal(t, "BattleOfTheBands", p.Name, "they should be equal")
 
 	users, _ := newProject.Users()
@@ -49,7 +49,7 @@ func TestFullProjectLifeCycle(t *testing.T) {
 	usersCount := len(users)
 	assert.Equal(t, 0, usersCount, "they should be equal")
 
-  users, _ = Users()
+	users, _ = Users()
 	firstUser := users[0]
 
 	r4 := initRecorder("fixtures/project_lifecycle4")
@@ -78,8 +78,8 @@ func TestFullProjectLifeCycle(t *testing.T) {
 
 func TestProjectErrors(t *testing.T) {
 	r := initRecorder("fixtures/project_errors")
-	defer r.Stop()	
+	defer r.Stop()
 
-  _, err := FindProject("bogus")
-  assert.Equal(t, "Not found", err.Error(), "they should be equal")
+	_, err := FindProject("bogus")
+	assert.Equal(t, "Not found", err.Error(), "they should be equal")
 }

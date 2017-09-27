@@ -2,7 +2,7 @@ package datacentred
 
 import (
 	"encoding/json"
- 	"time"
+	"time"
 )
 
 // Role is a grouping structure for assigning account permissions to all

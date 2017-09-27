@@ -14,7 +14,7 @@ func TestFullUserLifeCycle(t *testing.T) {
 
 	firstUser := users[0]
 
-  user, _ := FindUser(firstUser.Id)
+	user, _ := FindUser(firstUser.Id)
 	assert.Equal(t, firstUser.Id, user.Id, "they should be equal")
 
 	params := map[string]string{
@@ -29,7 +29,7 @@ func TestFullUserLifeCycle(t *testing.T) {
 	r2 := initRecorder("fixtures/user_lifecycle2")
 	defer r2.Stop()
 
-  user, _ = FindUser(newUser.Id)
+	user, _ = FindUser(newUser.Id)
 	assert.Equal(t, newUser.Id, user.Id, "they should be equal")
 
 	assert.Equal(t, "Preston", newUser.LastName, "they should be equal")
@@ -37,16 +37,16 @@ func TestFullUserLifeCycle(t *testing.T) {
 	r3 := initRecorder("fixtures/user_lifecycle3")
 	defer r3.Stop()
 
-  users, _ = Users()
+	users, _ = Users()
 	assert.Equal(t, usersCount+1, len(users), "they should be equal")
 
 	newUser.LastName = "Preston Esq."
 	newUser.Save()
 
-  user, _ = FindUser(newUser.Id)
+	user, _ = FindUser(newUser.Id)
 	assert.Equal(t, "Preston Esq.", user.LastName, "they should be equal")
 
-  result, _ := newUser.ChangePassword("Excellent")
+	result, _ := newUser.ChangePassword("Excellent")
 	assert.Equal(t, true, result, "they should be equal")
 
 	result, _ = newUser.Destroy()

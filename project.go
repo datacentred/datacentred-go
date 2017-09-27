@@ -88,7 +88,7 @@ func CreateProject(Params interface{}) Project {
 	return res.Project
 }
 
-// Save commits any changes to this project's fields. 
+// Save commits any changes to this project's fields.
 func (p Project) Save() Project {
 	project := map[string]interface{}{
 		"project": p,

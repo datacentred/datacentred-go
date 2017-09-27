@@ -16,13 +16,11 @@ func TestFullUserLifeCycle(t *testing.T) {
 
 	assert.Equal(t, firstUser.Id, FindUser(firstUser.Id).Id, "they should be equal")
 
-	params := map[string]interface{}{
-		"user": map[string]interface{}{
-			"email":      "bill.s.preston@esquire.com",
-			"password":   "Non Heinous",
-			"first_name": "Bill S.",
-			"last_name":  "Preston",
-		},
+	params := map[string]string{
+		"email":      "bill.s.preston@esquire.com",
+		"password":   "Non Heinous",
+		"first_name": "Bill S.",
+		"last_name":  "Preston",
 	}
 
 	newUser := CreateUser(params)

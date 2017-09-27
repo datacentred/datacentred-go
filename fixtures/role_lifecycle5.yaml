@@ -12,7 +12,7 @@ interactions:
       - Token token=access_key:secret_key
       Content-Type:
       - application/json
-    url: https://my.datacentred.io/api/roles/5713b281-b9f7-41d7-bc8c-9eb92920d1d3/users
+    url: https://my.datacentred.io/api/roles/d9fcd09b-7e9c-4449-b9a4-6a468a8cb777/users
     method: GET
   response:
     body: '{"users":[]}'
@@ -22,7 +22,7 @@ interactions:
       Content-Type:
       - application/vnd.datacentred.api+json; charset=utf-8
       Date:
-      - Tue, 26 Sep 2017 09:42:58 GMT
+      - Wed, 27 Sep 2017 05:55:18 GMT
       Etag:
       - W/"adac7b84dc3b7394d8385aa0c65fe27a"
       Server:
@@ -36,9 +36,9 @@ interactions:
       X-Frame-Options:
       - SAMEORIGIN
       X-Request-Id:
-      - 35832f80-7a33-4bed-b0ed-68aa22342e33
+      - 6bd2a9b6-912e-452e-8bac-a7b6e1c351a8
       X-Runtime:
-      - "0.144237"
+      - "0.120892"
       X-Xss-Protection:
       - 1; mode=block
     status: 200 OK
@@ -53,7 +53,7 @@ interactions:
       - Token token=access_key:secret_key
       Content-Type:
       - application/json
-    url: https://my.datacentred.io/api/roles/5713b281-b9f7-41d7-bc8c-9eb92920d1d3
+    url: https://my.datacentred.io/api/roles/d9fcd09b-7e9c-4449-b9a4-6a468a8cb777
     method: DELETE
   response:
     body: ""
@@ -61,7 +61,7 @@ interactions:
       Cache-Control:
       - no-cache
       Date:
-      - Tue, 26 Sep 2017 09:42:58 GMT
+      - Wed, 27 Sep 2017 05:55:19 GMT
       Server:
       - nginx/1.10.3
       Strict-Transport-Security:
@@ -73,9 +73,9 @@ interactions:
       X-Frame-Options:
       - SAMEORIGIN
       X-Request-Id:
-      - c2e317ee-e408-4a27-a828-c6490ab6659b
+      - 30ed76d9-1470-4ba4-98cc-8d5e58d53dc6
       X-Runtime:
-      - "0.167280"
+      - "0.142458"
       X-Xss-Protection:
       - 1; mode=block
     status: 204 No Content

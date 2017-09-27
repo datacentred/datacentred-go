@@ -15,17 +15,17 @@ interactions:
     url: https://my.datacentred.io/api/roles
     method: GET
   response:
-    body: '{"roles":[{"id":"bfe32940-00d5-45bc-a7e8-855adc9efbec","name":"Administrator","admin":true,"permissions":[],"created_at":"2015-03-24T14:57:55Z","updated_at":"2015-03-24T14:57:55Z","links":[{"href":"https://my.datacentred.io/api/roles/bfe32940-00d5-45bc-a7e8-855adc9efbec","rel":"self"},{"href":"https://my.datacentred.io/api/v1/schemas/role","rel":"schema"}]},{"id":"fb93c5f3-5af8-4598-9035-b0d76f4d2a35","name":"ffeds","admin":false,"permissions":[],"created_at":"2017-02-02T07:54:22Z","updated_at":"2017-02-02T07:54:22Z","links":[{"href":"https://my.datacentred.io/api/roles/fb93c5f3-5af8-4598-9035-b0d76f4d2a35","rel":"self"},{"href":"https://my.datacentred.io/api/v1/schemas/role","rel":"schema"}]},{"id":"654f423e-646a-4742-849d-d8c9ab9b4f39","name":"foo","admin":false,"permissions":["usage.read"],"created_at":"2017-09-12T16:20:02Z","updated_at":"2017-09-12T16:20:02Z","links":[{"href":"https://my.datacentred.io/api/roles/654f423e-646a-4742-849d-d8c9ab9b4f39","rel":"self"},{"href":"https://my.datacentred.io/api/v1/schemas/role","rel":"schema"}]},{"id":"5713b281-b9f7-41d7-bc8c-9eb92920d1d3","name":"Wyld
-      Stallyns","admin":false,"permissions":[],"created_at":"2017-09-26T09:42:56Z","updated_at":"2017-09-26T09:42:56Z","links":[{"href":"https://my.datacentred.io/api/roles/5713b281-b9f7-41d7-bc8c-9eb92920d1d3","rel":"self"},{"href":"https://my.datacentred.io/api/v1/schemas/role","rel":"schema"}]}]}'
+    body: '{"roles":[{"id":"bfe32940-00d5-45bc-a7e8-855adc9efbec","name":"Administrator","admin":true,"permissions":[],"created_at":"2015-03-24T14:57:55Z","updated_at":"2015-03-24T14:57:55Z","links":[{"href":"https://my.datacentred.io/api/roles/bfe32940-00d5-45bc-a7e8-855adc9efbec","rel":"self"},{"href":"https://my.datacentred.io/api/v1/schemas/role","rel":"schema"}]},{"id":"fb93c5f3-5af8-4598-9035-b0d76f4d2a35","name":"ffeds","admin":false,"permissions":[],"created_at":"2017-02-02T07:54:22Z","updated_at":"2017-02-02T07:54:22Z","links":[{"href":"https://my.datacentred.io/api/roles/fb93c5f3-5af8-4598-9035-b0d76f4d2a35","rel":"self"},{"href":"https://my.datacentred.io/api/v1/schemas/role","rel":"schema"}]},{"id":"654f423e-646a-4742-849d-d8c9ab9b4f39","name":"foo","admin":false,"permissions":["usage.read"],"created_at":"2017-09-12T16:20:02Z","updated_at":"2017-09-12T16:20:02Z","links":[{"href":"https://my.datacentred.io/api/roles/654f423e-646a-4742-849d-d8c9ab9b4f39","rel":"self"},{"href":"https://my.datacentred.io/api/v1/schemas/role","rel":"schema"}]},{"id":"d9fcd09b-7e9c-4449-b9a4-6a468a8cb777","name":"Wyld
+      Stallyns","admin":false,"permissions":[],"created_at":"2017-09-27T05:55:16Z","updated_at":"2017-09-27T05:55:16Z","links":[{"href":"https://my.datacentred.io/api/roles/d9fcd09b-7e9c-4449-b9a4-6a468a8cb777","rel":"self"},{"href":"https://my.datacentred.io/api/v1/schemas/role","rel":"schema"}]}]}'
     headers:
       Cache-Control:
       - max-age=0, private, must-revalidate
       Content-Type:
       - application/vnd.datacentred.api+json; charset=utf-8
       Date:
-      - Tue, 26 Sep 2017 09:42:56 GMT
+      - Wed, 27 Sep 2017 05:55:17 GMT
       Etag:
-      - W/"9f104218539d3f1e095a7279d9ab5794"
+      - W/"7c563f98541f5b3b53b14db44211b821"
       Server:
       - nginx/1.10.3
       Strict-Transport-Security:
@@ -37,15 +37,16 @@ interactions:
       X-Frame-Options:
       - SAMEORIGIN
       X-Request-Id:
-      - f74f2d9e-6e12-46a6-b026-0a00c97091b7
+      - 522a3c4d-2a00-4e59-8a6e-11b22e493341
       X-Runtime:
-      - "0.154358"
+      - "0.122201"
       X-Xss-Protection:
       - 1; mode=block
     status: 200 OK
     code: 200
 - request:
-    body: '{"id":"5713b281-b9f7-41d7-bc8c-9eb92920d1d3","name":"Wyld Stallyns Rock!","admin":false,"permissions":[],"created_at":"2017-09-26T09:42:56Z","updated_at":"2017-09-26T09:42:56Z"}'
+    body: '{"role":{"id":"d9fcd09b-7e9c-4449-b9a4-6a468a8cb777","name":"Wyld Stallyns
+      Rock!","admin":false,"permissions":[],"created_at":"2017-09-27T05:55:16Z","updated_at":"2017-09-27T05:55:16Z"}}'
     form: {}
     headers:
       Accept:
@@ -54,20 +55,20 @@ interactions:
       - Token token=access_key:secret_key
       Content-Type:
       - application/json
-    url: https://my.datacentred.io/api/roles/5713b281-b9f7-41d7-bc8c-9eb92920d1d3
+    url: https://my.datacentred.io/api/roles/d9fcd09b-7e9c-4449-b9a4-6a468a8cb777
     method: PUT
   response:
-    body: '{"role":{"id":"5713b281-b9f7-41d7-bc8c-9eb92920d1d3","name":"Wyld Stallyns
-      Rock!","admin":false,"permissions":[],"created_at":"2017-09-26T09:42:56Z","updated_at":"2017-09-26T09:42:56Z","links":[{"href":"https://my.datacentred.io/api/roles/5713b281-b9f7-41d7-bc8c-9eb92920d1d3","rel":"self"},{"href":"https://my.datacentred.io/api/v1/schemas/role","rel":"schema"}]}}'
+    body: '{"role":{"id":"d9fcd09b-7e9c-4449-b9a4-6a468a8cb777","name":"Wyld Stallyns
+      Rock!","admin":false,"permissions":[],"created_at":"2017-09-27T05:55:16Z","updated_at":"2017-09-27T05:55:17Z","links":[{"href":"https://my.datacentred.io/api/roles/d9fcd09b-7e9c-4449-b9a4-6a468a8cb777","rel":"self"},{"href":"https://my.datacentred.io/api/v1/schemas/role","rel":"schema"}]}}'
     headers:
       Cache-Control:
       - max-age=0, private, must-revalidate
       Content-Type:
       - application/vnd.datacentred.api+json; charset=utf-8
       Date:
-      - Tue, 26 Sep 2017 09:42:56 GMT
+      - Wed, 27 Sep 2017 05:55:17 GMT
       Etag:
-      - W/"32c21f155d9f604a3d94b86c65cd923b"
+      - W/"d7b961917e9c87504ef16e740b9ee73c"
       Server:
       - nginx/1.10.3
       Strict-Transport-Security:
@@ -79,9 +80,9 @@ interactions:
       X-Frame-Options:
       - SAMEORIGIN
       X-Request-Id:
-      - cab74b1b-652d-49b8-9b7d-2cfc85d8977f
+      - 9ef5d1e3-c96a-45cd-89e2-2b6ec52543bc
       X-Runtime:
-      - "0.177205"
+      - "0.186886"
       X-Xss-Protection:
       - 1; mode=block
     status: 200 OK
@@ -96,20 +97,20 @@ interactions:
       - Token token=access_key:secret_key
       Content-Type:
       - application/json
-    url: https://my.datacentred.io/api/roles/5713b281-b9f7-41d7-bc8c-9eb92920d1d3
+    url: https://my.datacentred.io/api/roles/d9fcd09b-7e9c-4449-b9a4-6a468a8cb777
     method: GET
   response:
-    body: '{"role":{"id":"5713b281-b9f7-41d7-bc8c-9eb92920d1d3","name":"Wyld Stallyns
-      Rock!","admin":false,"permissions":[],"created_at":"2017-09-26T09:42:56Z","updated_at":"2017-09-26T09:42:56Z","links":[{"href":"https://my.datacentred.io/api/roles/5713b281-b9f7-41d7-bc8c-9eb92920d1d3","rel":"self"},{"href":"https://my.datacentred.io/api/v1/schemas/role","rel":"schema"}]}}'
+    body: '{"role":{"id":"d9fcd09b-7e9c-4449-b9a4-6a468a8cb777","name":"Wyld Stallyns
+      Rock!","admin":false,"permissions":[],"created_at":"2017-09-27T05:55:16Z","updated_at":"2017-09-27T05:55:17Z","links":[{"href":"https://my.datacentred.io/api/roles/d9fcd09b-7e9c-4449-b9a4-6a468a8cb777","rel":"self"},{"href":"https://my.datacentred.io/api/v1/schemas/role","rel":"schema"}]}}'
     headers:
       Cache-Control:
       - max-age=0, private, must-revalidate
       Content-Type:
       - application/vnd.datacentred.api+json; charset=utf-8
       Date:
-      - Tue, 26 Sep 2017 09:42:57 GMT
+      - Wed, 27 Sep 2017 05:55:17 GMT
       Etag:
-      - W/"32c21f155d9f604a3d94b86c65cd923b"
+      - W/"d7b961917e9c87504ef16e740b9ee73c"
       Server:
       - nginx/1.10.3
       Strict-Transport-Security:
@@ -121,9 +122,9 @@ interactions:
       X-Frame-Options:
       - SAMEORIGIN
       X-Request-Id:
-      - 316bc2cf-2e24-4483-b87a-784f550d099e
+      - 15f66f4b-9dbc-4507-9c29-c290378efd7e
       X-Runtime:
-      - "0.121602"
+      - "0.126935"
       X-Xss-Protection:
       - 1; mode=block
     status: 200 OK
@@ -138,7 +139,7 @@ interactions:
       - Token token=access_key:secret_key
       Content-Type:
       - application/json
-    url: https://my.datacentred.io/api/roles/5713b281-b9f7-41d7-bc8c-9eb92920d1d3/users
+    url: https://my.datacentred.io/api/roles/d9fcd09b-7e9c-4449-b9a4-6a468a8cb777/users
     method: GET
   response:
     body: '{"users":[]}'
@@ -148,7 +149,7 @@ interactions:
       Content-Type:
       - application/vnd.datacentred.api+json; charset=utf-8
       Date:
-      - Tue, 26 Sep 2017 09:42:57 GMT
+      - Wed, 27 Sep 2017 05:55:17 GMT
       Etag:
       - W/"adac7b84dc3b7394d8385aa0c65fe27a"
       Server:
@@ -162,9 +163,9 @@ interactions:
       X-Frame-Options:
       - SAMEORIGIN
       X-Request-Id:
-      - 2c34b8cf-422b-4570-8892-e1100adfceac
+      - 70367f07-808c-40fa-bb57-dc12da043cf1
       X-Runtime:
-      - "0.125075"
+      - "0.127938"
       X-Xss-Protection:
       - 1; mode=block
     status: 200 OK
@@ -189,7 +190,7 @@ interactions:
       Content-Type:
       - application/vnd.datacentred.api+json; charset=utf-8
       Date:
-      - Tue, 26 Sep 2017 09:42:57 GMT
+      - Wed, 27 Sep 2017 05:55:18 GMT
       Etag:
       - W/"f855fe26babae4413565ed7b16a5f09f"
       Server:
@@ -203,9 +204,9 @@ interactions:
       X-Frame-Options:
       - SAMEORIGIN
       X-Request-Id:
-      - 009a249f-d1ba-4b79-930b-a6b934a987b0
+      - 2504c26d-2432-4cc9-b7eb-38e5d2afd7e6
       X-Runtime:
-      - "0.125307"
+      - "0.125038"
       X-Xss-Protection:
       - 1; mode=block
     status: 200 OK

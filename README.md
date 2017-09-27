@@ -90,10 +90,8 @@ fmt.Println(project)
 ### Create a role
 
 ```go
-params := map[string]interface{}{
-  "role": map[string]interface{}{
-    "name": "Wyld Stallyns",
-  },
+params := map[string]string{
+  "name": "Wyld Stallyns",
 }
 
 role := CreateRole(params)

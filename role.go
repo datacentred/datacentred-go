@@ -16,11 +16,11 @@ type Role struct {
 }
 
 type RolesResponse struct {
-	Roles []Role  `json:"roles"`
+	Roles []Role `json:"roles"`
 }
 
 type RoleResponse struct {
-	Role Role  `json:"role"`
+	Role Role `json:"role"`
 }
 
 func Roles() []Role {
@@ -45,7 +45,10 @@ func FindRole(Id string) Role {
 }
 
 func CreateRole(Params interface{}) Role {
-	jsonStr, _ := json.Marshal(Params)
+	role := map[string]interface{}{
+		"role": Params,
+	}
+	jsonStr, _ := json.Marshal(role)
 	data, err := Request("POST", "roles", jsonStr)
 	if err != nil {
 		fmt.Errorf("Request failed: %s", err)
@@ -56,7 +59,10 @@ func CreateRole(Params interface{}) Role {
 }
 
 func (r Role) Save() Role {
-	jsonStr, _ := json.Marshal(r)
+	role := map[string]interface{}{
+		"role": r,
+	}
+	jsonStr, _ := json.Marshal(role)
 	data, err := Request("PUT", "roles/"+r.Id, jsonStr)
 	if err != nil {
 		fmt.Errorf("Request failed: %s", err)

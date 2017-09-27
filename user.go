@@ -17,10 +17,10 @@ type User struct {
 }
 
 type UsersResponse struct {
-	Users []User  `json:"users"`
+	Users []User `json:"users"`
 }
 type UserResponse struct {
-	User User  `json:"user"`
+	User User `json:"user"`
 }
 
 func Users() []User {
@@ -45,7 +45,10 @@ func FindUser(Id string) User {
 }
 
 func CreateUser(Params interface{}) User {
-	jsonStr, _ := json.Marshal(Params)
+	user := map[string]interface{}{
+		"user": Params,
+	}
+	jsonStr, _ := json.Marshal(user)
 	data, err := Request("POST", "users", jsonStr)
 	if err != nil {
 		fmt.Errorf("Request failed: %s", err)
@@ -56,7 +59,10 @@ func CreateUser(Params interface{}) User {
 }
 
 func (u User) Save() User {
-	jsonStr, _ := json.Marshal(u)
+	user := map[string]interface{}{
+		"user": u,
+	}
+	jsonStr, _ := json.Marshal(user)
 	data, err := Request("PUT", "users/"+u.Id, jsonStr)
 	if err != nil {
 		fmt.Errorf("Request failed: %s", err)

@@ -16,10 +16,8 @@ func TestFullRoleLifeCycle(t *testing.T) {
 
 	assert.Equal(t, firstRole.Id, FindRole(firstRole.Id).Id, "they should be equal")
 
-	params := map[string]interface{}{
-		"role": map[string]interface{}{
-			"name": "Wyld Stallyns",
-		},
+	params := map[string]string{
+		"name": "Wyld Stallyns",
 	}
 
 	newRole := CreateRole(params)

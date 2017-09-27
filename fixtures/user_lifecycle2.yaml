@@ -12,20 +12,20 @@ interactions:
       - Token token=access_key:secret_key
       Content-Type:
       - application/json
-    url: https://my.datacentred.io/api/users/06d823b97ed74254ac89e628a2e402bb
+    url: https://my.datacentred.io/api/users/c522648cfefc458584d4c7262def07a0
     method: GET
   response:
-    body: '{"user":{"id":"06d823b97ed74254ac89e628a2e402bb","email":"bill.s.preston@esquire.com","first_name":"Bill
-      S.","last_name":"Preston","created_at":"2017-09-26T09:21:32Z","updated_at":"2017-09-26T09:21:32Z","links":[{"href":"https://my.datacentred.io/api/users/06d823b97ed74254ac89e628a2e402bb","rel":"self"},{"href":"https://my.datacentred.io/api/v1/schemas/user","rel":"schema"}]}}'
+    body: '{"user":{"id":"c522648cfefc458584d4c7262def07a0","email":"bill.s.preston@esquire.com","first_name":"Bill
+      S.","last_name":"Preston","created_at":"2017-09-27T06:13:52Z","updated_at":"2017-09-27T06:13:52Z","links":[{"href":"https://my.datacentred.io/api/users/c522648cfefc458584d4c7262def07a0","rel":"self"},{"href":"https://my.datacentred.io/api/v1/schemas/user","rel":"schema"}]}}'
     headers:
       Cache-Control:
       - max-age=0, private, must-revalidate
       Content-Type:
       - application/vnd.datacentred.api+json; charset=utf-8
       Date:
-      - Tue, 26 Sep 2017 09:21:33 GMT
+      - Wed, 27 Sep 2017 06:13:53 GMT
       Etag:
-      - W/"755ba0eacbcc2ac2e22d390700cf69f3"
+      - W/"18afa11c823981756249f4a460520aeb"
       Server:
       - nginx/1.10.3
       Strict-Transport-Security:
@@ -37,9 +37,9 @@ interactions:
       X-Frame-Options:
       - SAMEORIGIN
       X-Request-Id:
-      - 2bbedeab-c404-41cc-9fb4-9719a8c1d640
+      - 80b7cceb-98c1-4188-95b5-d37bf5b5590e
       X-Runtime:
-      - "0.152718"
+      - "0.285292"
       X-Xss-Protection:
       - 1; mode=block
     status: 200 OK

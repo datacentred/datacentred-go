@@ -12,19 +12,19 @@ interactions:
       - Token token=access_key:secret_key
       Content-Type:
       - application/json
-    url: https://my.datacentred.io/api/roles/5713b281-b9f7-41d7-bc8c-9eb92920d1d3
+    url: https://my.datacentred.io/api/roles/d9fcd09b-7e9c-4449-b9a4-6a468a8cb777
     method: GET
   response:
-    body: '{"role":{"id":"5713b281-b9f7-41d7-bc8c-9eb92920d1d3","name":"Wyld Stallyns","admin":false,"permissions":[],"created_at":"2017-09-26T09:42:56Z","updated_at":"2017-09-26T09:42:56Z","links":[{"href":"https://my.datacentred.io/api/roles/5713b281-b9f7-41d7-bc8c-9eb92920d1d3","rel":"self"},{"href":"https://my.datacentred.io/api/v1/schemas/role","rel":"schema"}]}}'
+    body: '{"role":{"id":"d9fcd09b-7e9c-4449-b9a4-6a468a8cb777","name":"Wyld Stallyns","admin":false,"permissions":[],"created_at":"2017-09-27T05:55:16Z","updated_at":"2017-09-27T05:55:16Z","links":[{"href":"https://my.datacentred.io/api/roles/d9fcd09b-7e9c-4449-b9a4-6a468a8cb777","rel":"self"},{"href":"https://my.datacentred.io/api/v1/schemas/role","rel":"schema"}]}}'
     headers:
       Cache-Control:
       - max-age=0, private, must-revalidate
       Content-Type:
       - application/vnd.datacentred.api+json; charset=utf-8
       Date:
-      - Tue, 26 Sep 2017 09:42:56 GMT
+      - Wed, 27 Sep 2017 05:55:17 GMT
       Etag:
-      - W/"e81cb06eddfcaad2dbc9059c0fd4ce21"
+      - W/"deaf5d3a1312a19fb1305e9b02f972f1"
       Server:
       - nginx/1.10.3
       Strict-Transport-Security:
@@ -36,9 +36,9 @@ interactions:
       X-Frame-Options:
       - SAMEORIGIN
       X-Request-Id:
-      - 82f17329-43ca-403c-ae63-307c9559b831
+      - 9255d464-0d8d-47fe-b1b1-0b9906f98651
       X-Runtime:
-      - "0.147156"
+      - "0.363903"
       X-Xss-Protection:
       - 1; mode=block
     status: 200 OK

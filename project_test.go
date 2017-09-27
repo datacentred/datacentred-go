@@ -16,10 +16,8 @@ func TestFullProjectLifeCycle(t *testing.T) {
 
 	assert.Equal(t, firstProject.Id, FindProject(firstProject.Id).Id, "they should be equal")
 
-	params := map[string]interface{}{
-		"project": map[string]interface{}{
-			"name": "SanDimasHigh",
-		},
+	params := map[string]string{
+		"name": "SanDimasHigh",
 	}
 
 	newProject := CreateProject(params)

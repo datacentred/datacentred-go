@@ -37,11 +37,11 @@ type Project struct {
 }
 
 type ProjectsResponse struct {
-	Projects []Project  `json:"projects"`
+	Projects []Project `json:"projects"`
 }
 
 type ProjectResponse struct {
-	Project Project  `json:"project"`
+	Project Project `json:"project"`
 }
 
 func Projects() []Project {
@@ -66,7 +66,10 @@ func FindProject(Id string) Project {
 }
 
 func CreateProject(Params interface{}) Project {
-	jsonStr, _ := json.Marshal(Params)
+	project := map[string]interface{}{
+		"project": Params,
+	}
+	jsonStr, _ := json.Marshal(project)
 	data, err := Request("POST", "projects", jsonStr)
 	if err != nil {
 		fmt.Errorf("Request failed: %s", err)
@@ -77,7 +80,10 @@ func CreateProject(Params interface{}) Project {
 }
 
 func (p Project) Save() Project {
-	jsonStr, _ := json.Marshal(p)
+	project := map[string]interface{}{
+		"project": p,
+	}
+	jsonStr, _ := json.Marshal(project)
 	data, err := Request("PUT", "projects/"+p.Id, jsonStr)
 	if err != nil {
 		fmt.Errorf("Request failed: %s", err)

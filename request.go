@@ -23,10 +23,13 @@ type apiErrorsResponse struct {
 
 // ApiVersion is the API microversion this SDK currently targets on server.
 const ApiVersion = "1"
+
 // ContentType is the request content type for the API.
 const ContentType = "application/json"
+
 // AcceptType is the response type we accept from the server.
 const AcceptType = "application/vnd.datacentred.api+json"
+
 // BaseUri is the server's base URI before path suffixes are added.
 const BaseUri = "https://my.datacentred.io/api/"
 

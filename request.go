@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"encoding/json"
 	"errors"
-	"fmt"
 	"io/ioutil"
 	"net/http"
 	"os"
@@ -84,7 +83,6 @@ func Request(verb string, path string, body []byte) ([]byte, error) {
 		422:
 		var apiErrors apiErrorsResponse
 		json.Unmarshal(respBody, &apiErrors)
-		fmt.Println(apiErrors.Errors[0].Detail)
 		return nil, errors.New(apiErrors.Errors[0].Detail)
 	}
 

@@ -1,0 +1,78 @@
+---
+version: 1
+rwmutex: {}
+interactions:
+- request:
+    body: ""
+    form: {}
+    headers:
+      Accept:
+      - application/vnd.datacentred.api+json; version=1
+      Authorization:
+      - Token token=access_key:secret_key
+      Content-Type:
+      - application/json
+    url: https://my.datacentred.io/api/projects/7a527a602e004ef8b7e0ace486b85e50
+    method: DELETE
+  response:
+    body: ""
+    headers:
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/vnd.datacentred.api+json
+      Date:
+      - Wed, 27 Sep 2017 12:49:57 GMT
+      Server:
+      - nginx/1.10.3
+      X-Api-Version:
+      - "1"
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Request-Id:
+      - a64a4ac7-455e-4205-b24d-5d365bbc83aa
+      X-Runtime:
+      - "0.122113"
+      X-Xss-Protection:
+      - 1; mode=block
+    status: 404 Not Found
+    code: 404
+- request:
+    body: ""
+    form: {}
+    headers:
+      Accept:
+      - application/vnd.datacentred.api+json; version=1
+      Authorization:
+      - Token token=access_key:secret_key
+      Content-Type:
+      - application/json
+    url: https://my.datacentred.io/api/projects/7a527a602e004ef8b7e0ace486b85e50/users
+    method: GET
+  response:
+    body: '{"errors":[{"detail":"No such project ''7a527a602e004ef8b7e0ace486b85e50''"}],"links":[{"href":"https://my.datacentred.io/api","rel":"help"}]}'
+    headers:
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Wed, 27 Sep 2017 12:49:57 GMT
+      Server:
+      - nginx/1.10.3
+      X-Api-Version:
+      - "1"
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Request-Id:
+      - ca244ace-ce92-4ca5-880d-97275b18f048
+      X-Runtime:
+      - "0.119243"
+      X-Xss-Protection:
+      - 1; mode=block
+    status: 404 Not Found
+    code: 404

@@ -77,9 +77,46 @@ func TestFullProjectLifeCycle(t *testing.T) {
 }
 
 func TestProjectErrors(t *testing.T) {
-	r := initRecorder("fixtures/project_errors")
-	defer r.Stop()
+	r1 := initRecorder("fixtures/project_errors1")
+	defer r1.Stop()
 
 	_, err := FindProject("bogus")
 	assert.Equal(t, "Not found", err.Error(), "they should be equal")
+
+	params := map[string]string{
+		"name": "",
+	}
+
+	newProject, err := CreateProject(params)
+	assert.Nil(t, newProject)
+	assert.Equal(t, "Project name too short.", err.Error(), "they should be equal")
+
+	r2 := initRecorder("fixtures/project_errors2")
+	defer r2.Stop()
+
+	params = map[string]string{
+		"name": "SanDimasHigh",
+	}
+
+	newProject, _ = CreateProject(params)
+
+	_, err = newProject.AddUser("Boom!")
+	assert.Equal(t, "Not found", err.Error(), "they should be equal")
+
+	_, err = newProject.RemoveUser("Boom!")
+	assert.Equal(t, "Not found", err.Error(), "they should be equal")
+
+  newProject.Destroy()
+  newProject.Name = "Boom!"
+  _, err = newProject.Save()
+  assert.Equal(t, "Not found", err.Error(), "they should be equal")
+
+  r3 := initRecorder("fixtures/project_errors3")
+	defer r3.Stop()
+
+  _, err = newProject.Destroy()
+  assert.Equal(t, "Not found", err.Error(), "they should be equal")  
+
+ 	_, err = newProject.Users()
+	assert.Equal(t, "Not found", err.Error(), "they should be equal") 
 }

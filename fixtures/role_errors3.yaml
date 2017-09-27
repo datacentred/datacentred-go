@@ -1,0 +1,78 @@
+---
+version: 1
+rwmutex: {}
+interactions:
+- request:
+    body: ""
+    form: {}
+    headers:
+      Accept:
+      - application/vnd.datacentred.api+json; version=1
+      Authorization:
+      - Token token=access_key:secret_key
+      Content-Type:
+      - application/json
+    url: https://my.datacentred.io/api/roles/bcb904ee-afb7-4f38-ac55-a9e29804dbf1
+    method: DELETE
+  response:
+    body: ""
+    headers:
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/vnd.datacentred.api+json
+      Date:
+      - Wed, 27 Sep 2017 12:51:48 GMT
+      Server:
+      - nginx/1.10.3
+      X-Api-Version:
+      - "1"
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Request-Id:
+      - 6b193dd3-d414-4c7b-8a4a-32921646f6bb
+      X-Runtime:
+      - "0.131490"
+      X-Xss-Protection:
+      - 1; mode=block
+    status: 404 Not Found
+    code: 404
+- request:
+    body: ""
+    form: {}
+    headers:
+      Accept:
+      - application/vnd.datacentred.api+json; version=1
+      Authorization:
+      - Token token=access_key:secret_key
+      Content-Type:
+      - application/json
+    url: https://my.datacentred.io/api/roles/bcb904ee-afb7-4f38-ac55-a9e29804dbf1/users
+    method: GET
+  response:
+    body: '{"errors":[{"detail":"No such role ''bcb904ee-afb7-4f38-ac55-a9e29804dbf1''"}],"links":[{"href":"https://my.datacentred.io/api","rel":"help"}]}'
+    headers:
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Wed, 27 Sep 2017 12:51:48 GMT
+      Server:
+      - nginx/1.10.3
+      X-Api-Version:
+      - "1"
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Request-Id:
+      - 1a8fa1af-69c2-4028-9223-b22bd7c333f4
+      X-Runtime:
+      - "0.119361"
+      X-Xss-Protection:
+      - 1; mode=block
+    status: 404 Not Found
+    code: 404

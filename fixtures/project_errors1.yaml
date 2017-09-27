@@ -1,0 +1,78 @@
+---
+version: 1
+rwmutex: {}
+interactions:
+- request:
+    body: ""
+    form: {}
+    headers:
+      Accept:
+      - application/vnd.datacentred.api+json; version=1
+      Authorization:
+      - Token token=access_key:secret_key
+      Content-Type:
+      - application/json
+    url: https://my.datacentred.io/api/projects/bogus
+    method: GET
+  response:
+    body: ""
+    headers:
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/vnd.datacentred.api+json
+      Date:
+      - Wed, 27 Sep 2017 12:49:37 GMT
+      Server:
+      - nginx/1.10.3
+      X-Api-Version:
+      - "1"
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Request-Id:
+      - 4fd1da0b-f40e-45f5-9d0a-7e13e7aae73a
+      X-Runtime:
+      - "0.172116"
+      X-Xss-Protection:
+      - 1; mode=block
+    status: 404 Not Found
+    code: 404
+- request:
+    body: '{"project":{"name":""}}'
+    form: {}
+    headers:
+      Accept:
+      - application/vnd.datacentred.api+json; version=1
+      Authorization:
+      - Token token=access_key:secret_key
+      Content-Type:
+      - application/json
+    url: https://my.datacentred.io/api/projects
+    method: POST
+  response:
+    body: '{"errors":[{"resource":"project","detail":"Project name too short.","field":"name"}],"links":[{"href":"https://my.datacentred.io/api","rel":"help"}]}'
+    headers:
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Wed, 27 Sep 2017 12:49:38 GMT
+      Server:
+      - nginx/1.10.3
+      X-Api-Version:
+      - "1"
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Request-Id:
+      - 14d9c7e5-f586-4eae-88e0-bcb556fa2fa6
+      X-Runtime:
+      - "0.572715"
+      X-Xss-Protection:
+      - 1; mode=block
+    status: 422 Unprocessable Entity
+    code: 422

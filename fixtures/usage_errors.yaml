@@ -1,0 +1,41 @@
+---
+version: 1
+rwmutex: {}
+interactions:
+- request:
+    body: ""
+    form: {}
+    headers:
+      Accept:
+      - application/vnd.datacentred.api+json; version=1
+      Authorization:
+      - Token token=access_key:secret_key
+      Content-Type:
+      - application/json
+    url: https://my.datacentred.io/api/usage/1990/5
+    method: GET
+  response:
+    body: ""
+    headers:
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - text/html
+      Date:
+      - Wed, 27 Sep 2017 12:56:15 GMT
+      Server:
+      - nginx/1.10.3
+      X-Api-Version:
+      - "1"
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Request-Id:
+      - da855c92-d760-41ab-8e75-31e2e880809e
+      X-Runtime:
+      - "0.141321"
+      X-Xss-Protection:
+      - 1; mode=block
+    status: 404 Not Found
+    code: 404

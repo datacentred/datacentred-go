@@ -1,0 +1,78 @@
+---
+version: 1
+rwmutex: {}
+interactions:
+- request:
+    body: ""
+    form: {}
+    headers:
+      Accept:
+      - application/vnd.datacentred.api+json; version=1
+      Authorization:
+      - Token token=access_key:secret_key
+      Content-Type:
+      - application/json
+    url: https://my.datacentred.io/api/roles/bogus
+    method: GET
+  response:
+    body: ""
+    headers:
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/vnd.datacentred.api+json
+      Date:
+      - Wed, 27 Sep 2017 12:51:47 GMT
+      Server:
+      - nginx/1.10.3
+      X-Api-Version:
+      - "1"
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Request-Id:
+      - 012e906c-e8ff-41be-a4cc-cb0bc7ba87f1
+      X-Runtime:
+      - "0.130535"
+      X-Xss-Protection:
+      - 1; mode=block
+    status: 404 Not Found
+    code: 404
+- request:
+    body: '{"role":{"name":""}}'
+    form: {}
+    headers:
+      Accept:
+      - application/vnd.datacentred.api+json; version=1
+      Authorization:
+      - Token token=access_key:secret_key
+      Content-Type:
+      - application/json
+    url: https://my.datacentred.io/api/roles
+    method: POST
+  response:
+    body: '{"errors":[{"resource":"role","detail":"Role name too short.","field":"name"}],"links":[{"href":"https://my.datacentred.io/api","rel":"help"}]}'
+    headers:
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Wed, 27 Sep 2017 12:51:47 GMT
+      Server:
+      - nginx/1.10.3
+      X-Api-Version:
+      - "1"
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Request-Id:
+      - 55d219ac-aaa7-415b-a011-b3b4ec7f301a
+      X-Runtime:
+      - "0.124137"
+      X-Xss-Protection:
+      - 1; mode=block
+    status: 422 Unprocessable Entity
+    code: 422

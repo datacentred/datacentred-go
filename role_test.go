@@ -71,3 +71,48 @@ func TestFullRoleLifeCycle(t *testing.T) {
 	result, _ = newRole.Destroy()
 	assert.Equal(t, true, result, "they should be equal")
 }
+
+func TestRoleErrors(t *testing.T) {
+	r1 := initRecorder("fixtures/role_errors1")
+	defer r1.Stop()
+
+	_, err := FindRole("bogus")
+	assert.Equal(t, "Not found", err.Error(), "they should be equal")
+
+	params := map[string]string{
+		"name": "",
+	}
+
+	newRole, err := CreateRole(params)
+	assert.Nil(t, newRole)
+	assert.Equal(t, "Role name too short.", err.Error(), "they should be equal")
+
+	r2 := initRecorder("fixtures/role_errors2")
+	defer r2.Stop()
+
+	params = map[string]string{
+		"name": "SanDimasHigh",
+	}
+
+	newRole, _ = CreateRole(params)
+
+	_, err = newRole.AddUser("Boom!")
+	assert.Equal(t, "Not found", err.Error(), "they should be equal")
+
+	_, err = newRole.RemoveUser("Boom!")
+	assert.Equal(t, "Not found", err.Error(), "they should be equal")
+
+  newRole.Destroy()
+  newRole.Name = "Boom!"
+  _, err = newRole.Save()
+  assert.Equal(t, "Not found", err.Error(), "they should be equal")
+
+  r3 := initRecorder("fixtures/role_errors3")
+	defer r3.Stop()
+
+  _, err = newRole.Destroy()
+  assert.Equal(t, "Not found", err.Error(), "they should be equal")  
+
+ 	_, err = newRole.Users()
+	assert.Equal(t, "Not found", err.Error(), "they should be equal") 
+}

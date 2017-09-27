@@ -1,0 +1,193 @@
+---
+version: 1
+rwmutex: {}
+interactions:
+- request:
+    body: '{"project":{"name":"SanDimasHigh"}}'
+    form: {}
+    headers:
+      Accept:
+      - application/vnd.datacentred.api+json; version=1
+      Authorization:
+      - Token token=access_key:secret_key
+      Content-Type:
+      - application/json
+    url: https://my.datacentred.io/api/projects
+    method: POST
+  response:
+    body: '{"project":{"id":"7a527a602e004ef8b7e0ace486b85e50","name":"SanDimasHigh","created_at":"2017-09-27T12:49:39Z","updated_at":"2017-09-27T12:49:39Z","quota_set":{"compute":{"instances":5,"cores":5,"ram":10240},"volume":{"volumes":4,"snapshots":4,"gigabytes":40},"network":{"floatingip":1,"router":1,"security_group_rule":100,"security_group":10,"network":10,"port":10,"subnet":10,"pool":10,"vip":10}},"links":[{"href":"https://my.datacentred.io/api/projects/7a527a602e004ef8b7e0ace486b85e50","rel":"self"},{"href":"https://my.datacentred.io/api/v1/schemas/project","rel":"schema"}]}}'
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/vnd.datacentred.api+json; charset=utf-8
+      Date:
+      - Wed, 27 Sep 2017 12:49:39 GMT
+      Etag:
+      - W/"2503fecc486e89cbcc8b16f4129943e2"
+      Server:
+      - nginx/1.10.3
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Api-Version:
+      - "1"
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Request-Id:
+      - 5eb43051-c875-4c09-bf56-9fe398029855
+      X-Runtime:
+      - "0.803249"
+      X-Xss-Protection:
+      - 1; mode=block
+    status: 201 Created
+    code: 201
+- request:
+    body: ""
+    form: {}
+    headers:
+      Accept:
+      - application/vnd.datacentred.api+json; version=1
+      Authorization:
+      - Token token=access_key:secret_key
+      Content-Type:
+      - application/json
+    url: https://my.datacentred.io/api/projects/7a527a602e004ef8b7e0ace486b85e50/users/Boom!
+    method: PUT
+  response:
+    body: '{"errors":[{"detail":"No such user ''Boom!''"}],"links":[{"href":"https://my.datacentred.io/api","rel":"help"}]}'
+    headers:
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Wed, 27 Sep 2017 12:49:39 GMT
+      Server:
+      - nginx/1.10.3
+      X-Api-Version:
+      - "1"
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Request-Id:
+      - 677a7a64-133a-47db-a952-1af1d85b8e92
+      X-Runtime:
+      - "0.123198"
+      X-Xss-Protection:
+      - 1; mode=block
+    status: 404 Not Found
+    code: 404
+- request:
+    body: ""
+    form: {}
+    headers:
+      Accept:
+      - application/vnd.datacentred.api+json; version=1
+      Authorization:
+      - Token token=access_key:secret_key
+      Content-Type:
+      - application/json
+    url: https://my.datacentred.io/api/projects/7a527a602e004ef8b7e0ace486b85e50/users/Boom!
+    method: DELETE
+  response:
+    body: '{"errors":[{"detail":"No such user ''Boom!''"}],"links":[{"href":"https://my.datacentred.io/api","rel":"help"}]}'
+    headers:
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Wed, 27 Sep 2017 12:49:39 GMT
+      Server:
+      - nginx/1.10.3
+      X-Api-Version:
+      - "1"
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Request-Id:
+      - b79f1af7-bec9-4317-815f-201f9a25acfc
+      X-Runtime:
+      - "0.124951"
+      X-Xss-Protection:
+      - 1; mode=block
+    status: 404 Not Found
+    code: 404
+- request:
+    body: ""
+    form: {}
+    headers:
+      Accept:
+      - application/vnd.datacentred.api+json; version=1
+      Authorization:
+      - Token token=access_key:secret_key
+      Content-Type:
+      - application/json
+    url: https://my.datacentred.io/api/projects/7a527a602e004ef8b7e0ace486b85e50
+    method: DELETE
+  response:
+    body: ""
+    headers:
+      Cache-Control:
+      - no-cache
+      Date:
+      - Wed, 27 Sep 2017 12:49:56 GMT
+      Server:
+      - nginx/1.10.3
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Api-Version:
+      - "1"
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Request-Id:
+      - dc744de5-797e-4ce7-97c7-06401e8bd50e
+      X-Runtime:
+      - "17.071605"
+      X-Xss-Protection:
+      - 1; mode=block
+    status: 204 No Content
+    code: 204
+- request:
+    body: '{"project":{"id":"7a527a602e004ef8b7e0ace486b85e50","name":"Boom!","quota_set":{"compute":{"cores":5,"instances":5,"ram":10240},"volume":{"gigabytes":40,"snapshots":4,"volumes":4},"network":{"floating_ip":0,"network":10,"port":10,"router":1,"security_group":10,"security_group_rule":100,"subnet":10}},"created_at":"2017-09-27T12:49:39Z","updated_at":"2017-09-27T12:49:39Z"}}'
+    form: {}
+    headers:
+      Accept:
+      - application/vnd.datacentred.api+json; version=1
+      Authorization:
+      - Token token=access_key:secret_key
+      Content-Type:
+      - application/json
+    url: https://my.datacentred.io/api/projects/7a527a602e004ef8b7e0ace486b85e50
+    method: PUT
+  response:
+    body: ""
+    headers:
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/vnd.datacentred.api+json
+      Date:
+      - Wed, 27 Sep 2017 12:49:57 GMT
+      Server:
+      - nginx/1.10.3
+      X-Api-Version:
+      - "1"
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Request-Id:
+      - 4e12e8ab-e6d6-4014-8c0b-b89d6a9a348b
+      X-Runtime:
+      - "0.123651"
+      X-Xss-Protection:
+      - 1; mode=block
+    status: 404 Not Found
+    code: 404

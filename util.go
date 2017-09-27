@@ -21,7 +21,7 @@ func prettyPrintJson(input []byte) {
 func initRecorder(Name string) *recorder.Recorder {
 	r, err := recorder.New(Name)
 	if err != nil {
-		fmt.Errorf("Recorder failed: %s", err)
+		fmt.Println("JSON parse error: ", err)
 	}
 	defer r.Stop()
 

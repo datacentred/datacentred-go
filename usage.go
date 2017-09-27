@@ -134,8 +134,8 @@ type Usage struct {
 	Projects      []ProjectUsage `json:"projects"`
 }
 
-// ShowUsage retrieves resource usage data for a given month belonging to the currently authenticated user's account.
-func ShowUsage(year int, month int) (*Usage, error) {
+// FindUsage retrieves resource usage data for a given month belonging to the currently authenticated user's account.
+func FindUsage(year int, month int) (*Usage, error) {
 	data, err := Request("GET", "usage/"+strconv.Itoa(year)+"/"+strconv.Itoa(month), nil)
 	if err != nil {
 		return nil, err

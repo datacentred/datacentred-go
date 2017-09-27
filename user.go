@@ -13,7 +13,6 @@ type User struct {
 	LastName  string    `json:"last_name"`
 	CreatedAt time.Time `json:"created_at"`
 	UpdatedAt time.Time `json:"updated_at"`
-	Password  string    `json:"password"`
 }
 
 type UsersResponse struct {
@@ -74,6 +73,18 @@ func (u User) Save() User {
 
 func (u User) Destroy() bool {
 	_, err := Request("DELETE", "users/"+u.Id, nil)
+	if err != nil {
+		fmt.Errorf("Request failed: %s", err)
+	}
+	return true
+}
+
+func (u User) ChangePassword(Password string) bool {
+	user := map[string]interface{}{
+		"password": Password,
+	}
+	jsonStr, _ := json.Marshal(user)
+	_, err := Request("PUT", "users/"+u.Id, jsonStr)
 	if err != nil {
 		fmt.Errorf("Request failed: %s", err)
 	}

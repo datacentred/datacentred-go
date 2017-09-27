@@ -42,6 +42,8 @@ func TestFullUserLifeCycle(t *testing.T) {
 
 	assert.Equal(t, "Preston Esq.", FindUser(newUser.Id).LastName, "they should be equal")
 
+  assert.Equal(t, true, newUser.ChangePassword("Excellent"), "they should be equal")
+
 	result := newUser.Destroy()
 	assert.Equal(t, true, result, "they should be equal")
 }

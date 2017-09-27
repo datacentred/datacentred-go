@@ -7,6 +7,8 @@ import (
 	"time"
 )
 
+// UsageBreakdown show the cost and unit-usage of a resource.
+// This structure is common to all resource types.
 type UsageBreakdown struct {
 	Cost struct {
 		Currency string  `json:"currency"`
@@ -18,6 +20,7 @@ type UsageBreakdown struct {
 	Value float64                `json:"value"`
 }
 
+// ProjectImagesUsage contains usage information for a single cloud image.
 type ProjectImagesUsage struct {
 	CreatedAt    time.Time        `json:"created_at"`
 	DeletedAt    time.Time        `json:"deleted_at"`
@@ -28,6 +31,8 @@ type ProjectImagesUsage struct {
 	Usage        []UsageBreakdown `json:"usage"`
 }
 
+// InstanceHistoryEntry contains information about a specific event in
+// a cloud instance's runtime history.
 type InstanceHistoryEntry struct {
 	Billable   bool      `json:"billable"`
 	EventName  string    `json:"event_name"`
@@ -38,6 +43,7 @@ type InstanceHistoryEntry struct {
 	UserId     string    `json:"user_id"`
 }
 
+// InstanceFlavor contains information about a cloud instance's assigned flavor.
 type InstanceFlavor struct {
 	Id         string `json:"id"`
 	Name       string `json:"name"`
@@ -46,6 +52,7 @@ type InstanceFlavor struct {
 	VcpusCount int    `json:"vcpus_count"`
 }
 
+// ProjectInstancesUsage contains usage information about a single cloud instance.
 type ProjectInstancesUsage struct {
 	FirstBootedAt time.Time              `json:"first_booted_at"`
 	TerminatedAt  time.Time              `json:"terminated_at"`
@@ -58,18 +65,21 @@ type ProjectInstancesUsage struct {
 	Usage         []UsageBreakdown       `json:"usage"`
 }
 
+// IpQuotaChange contains information about an IP quota change event.
 type IpQuotaChange struct {
 	Previous   int       `json:"previous"`
 	Quota      int       `json:"quota"`
 	RecordedAt time.Time `json:"recorded_at"`
 }
 
+// ProjectIpsUsage contains usage information about IPs.
 type ProjectIpsUsage struct {
 	CurrentQuota int              `json:"current_quota"`
 	QuotaChanges []IpQuotaChange  `json:"quota_changes"`
 	Usage        []UsageBreakdown `json:"usage"`
 }
 
+// ProjectLoadBalancersUsage contains usage information about a single cloud load balancer.
 type ProjectLoadBalancersUsage struct {
 	Id           string           `json:"id"`
 	Name         string           `json:"name"`
@@ -79,6 +89,7 @@ type ProjectLoadBalancersUsage struct {
 	Usage        []UsageBreakdown `json:"usage"`
 }
 
+// ProjectVolumesUsage contains usage information about a single cloud volume.
 type ProjectVolumesUsage struct {
 	CreatedAt    time.Time        `json:"created_at"`
 	DeletedAt    time.Time        `json:"deleted_at"`
@@ -90,6 +101,7 @@ type ProjectVolumesUsage struct {
 	Usage        []UsageBreakdown `json:"usage"`
 }
 
+// ProjectVpnsUsage contains usage information about a single cloud VPN.
 type ProjectVpnsUsage struct {
 	Id           string           `json:"id"`
 	Name         string           `json:"name"`
@@ -99,6 +111,7 @@ type ProjectVpnsUsage struct {
 	Usage        []UsageBreakdown `json:"usage"`
 }
 
+// ProjectUsage contains usage information about a single cloud project.
 type ProjectUsage struct {
 	Id    string `json:"id"`
 	Name  string `json:"name"`
@@ -115,11 +128,14 @@ type ProjectUsage struct {
 	} `json:"usage"`
 }
 
+// Usage contains usage information about all cloud projects belonging
+// to the currently authenticated user's account.
 type Usage struct {
 	LastUpdatedAt time.Time      `json:"last_updated_at"`
 	Projects      []ProjectUsage `json:"projects"`
 }
 
+// ShowUsage retrieves resource usage data for a given month belonging to the currently authenticated user's account.
 func ShowUsage(year int, month int) Usage {
 	data, err := Request("GET", "usage/"+strconv.Itoa(year)+"/"+strconv.Itoa(month), nil)
 	if err != nil {

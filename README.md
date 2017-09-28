@@ -2,7 +2,7 @@
 
 [![CircleCI](https://circleci.com/gh/datacentred/datacentred-go.svg?style=svg)](https://circleci.com/gh/datacentred/datacentred-go) [![Go Report Card](https://goreportcard.com/badge/github.com/datacentred/datacentred-go)](https://goreportcard.com/report/github.com/datacentred/datacentred-go) [![GoDoc](https://godoc.org/github.com/datacentred/datacentred-go?status.svg)](https://godoc.org/github.com/datacentred/datacentred-go)
 
-Go client library for automating DataCentred account management.
+Client library for automating DataCentred account management in Go.
 
 [www.datacentred.co.uk](https://www.datacentred.co.uk)
 
@@ -24,7 +24,7 @@ import(
 
 # Usage
 
-This API allows you to automate operations against your DataCentred account.
+This SDK allows you to automate operations against your DataCentred account.
 
 Operations include:
 
@@ -35,7 +35,7 @@ Operations include:
 
 ## Authentication
 
-The API uses two pieces of information to authenticate access.
+The API used by this SDK uses two pieces of information to authenticate access.
 
 A unique access key specific to your DataCentred account, and a secret key which is generated once.
 
@@ -122,7 +122,7 @@ fmt.Println(result)
 
 
 ```go
-usage, err := datacentred.ShowUsage()
+usage, err := datacentred.FindUsage(2017, 9)
 fmt.Println(usage.Projects[0].Usage.Instances[0].Usage.Value)
 // => 744
 fmt.Println(usage.Projects[0].Usage.Instances[0].Usage.Unit)

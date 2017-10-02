@@ -32,6 +32,8 @@ const AcceptType = "application/vnd.datacentred.api+json"
 // BaseUri is the server's base URI before path suffixes are added.
 const BaseUri = "https://my.datacentred.io/api/"
 
+const UserAgent = "datacentred/go v1"
+
 // Configuration is a structure for config data this SDK.
 type Configuration struct {
 	Client    http.Client
@@ -56,6 +58,7 @@ func Request(verb string, path string, body []byte) ([]byte, error) {
 	req.Header.Add("Accept", AcceptType+"; version="+ApiVersion)
 	req.Header.Add("Authorization", "Token token="+Config.AccessKey+":"+Config.SecretKey)
 	req.Header.Add("Content-Type", ContentType)
+	req.Header.Add("User-Agent", UserAgent)
 
 	resp, err := Config.Client.Do(req)
 

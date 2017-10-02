@@ -7,6 +7,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"os"
+	"strconv"
 )
 
 // ApiError contains details of a single error returned from the API.
@@ -87,6 +88,8 @@ func Request(verb string, path string, body []byte) ([]byte, error) {
 		var apiErrors apiErrorsResponse
 		json.Unmarshal(respBody, &apiErrors)
 		return nil, errors.New(apiErrors.Errors[0].Detail)
+	default:
+		return nil, errors.New("Server returned " + strconv.Itoa(resp.StatusCode) + ": " + string(respBody))
 	}
 
 	return respBody, nil

@@ -16,9 +16,9 @@ func TestUsage(t *testing.T) {
 }
 
 func TestUsageErrors(t *testing.T) {
-  r1 := initRecorder("fixtures/usage_errors")
-  defer r1.Stop()
+	r1 := initRecorder("fixtures/usage_errors")
+	defer r1.Stop()
 
-  _, err := FindUsage(1990, 5)
-  assert.Equal(t, "Not found", err.Error(), "they should be equal")
+	_, err := FindUsage(1990, 5)
+	assert.Equal(t, "Not found", err.Error(), "they should be equal")
 }

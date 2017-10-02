@@ -72,20 +72,20 @@ func TestUserErrors(t *testing.T) {
 	defer r2.Stop()
 
 	params = map[string]string{
-		"email": "bill.s.preston@esquire.com",
+		"email":    "bill.s.preston@esquire.com",
 		"password": "Excellent",
 	}
 
 	newUser, _ = CreateUser(params)
 
-  newUser.Destroy()
-  newUser.FirstName = "Boom!"
-  _, err = newUser.Save()
-  assert.Equal(t, "Not found", err.Error(), "they should be equal")
+	newUser.Destroy()
+	newUser.FirstName = "Boom!"
+	_, err = newUser.Save()
+	assert.Equal(t, "Not found", err.Error(), "they should be equal")
 
-  r3 := initRecorder("fixtures/user_errors3")
+	r3 := initRecorder("fixtures/user_errors3")
 	defer r3.Stop()
 
-  _, err = newUser.Destroy()
-  assert.Equal(t, "Not found", err.Error(), "they should be equal")  
+	_, err = newUser.Destroy()
+	assert.Equal(t, "Not found", err.Error(), "they should be equal")
 }

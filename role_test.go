@@ -102,17 +102,17 @@ func TestRoleErrors(t *testing.T) {
 	_, err = newRole.RemoveUser("Boom!")
 	assert.Equal(t, "Not found", err.Error(), "they should be equal")
 
-  newRole.Destroy()
-  newRole.Name = "Boom!"
-  _, err = newRole.Save()
-  assert.Equal(t, "Not found", err.Error(), "they should be equal")
+	newRole.Destroy()
+	newRole.Name = "Boom!"
+	_, err = newRole.Save()
+	assert.Equal(t, "Not found", err.Error(), "they should be equal")
 
-  r3 := initRecorder("fixtures/role_errors3")
+	r3 := initRecorder("fixtures/role_errors3")
 	defer r3.Stop()
 
-  _, err = newRole.Destroy()
-  assert.Equal(t, "Not found", err.Error(), "they should be equal")  
+	_, err = newRole.Destroy()
+	assert.Equal(t, "Not found", err.Error(), "they should be equal")
 
- 	_, err = newRole.Users()
-	assert.Equal(t, "Not found", err.Error(), "they should be equal") 
+	_, err = newRole.Users()
+	assert.Equal(t, "Not found", err.Error(), "they should be equal")
 }

@@ -77,20 +77,12 @@ func Request(verb string, path string, body []byte) ([]byte, error) {
 		201,
 		204:
 		return respBody, nil
-	case
-		401:
-		return nil, errors.New("Unauthorized: check your credentials")
-	case
-		404:
-		return nil, errors.New("Not found")
-	case
-		422:
-		var apiErrors apiErrorsResponse
-		json.Unmarshal(respBody, &apiErrors)
-		return nil, errors.New(apiErrors.Errors[0].Detail)
 	default:
-		return nil, errors.New(strings.Trim("Server returned " + resp.Status + ". " + string(respBody), " "))
+		var apiErrors apiErrorsResponse
+		err := json.Unmarshal(respBody, &apiErrors)
+		if(err != nil) {
+      return nil, errors.New(strings.Trim(resp.Status + ". " + string(respBody), " "))
+		}
+		return nil, errors.New(strings.Trim(resp.Status + ". " + apiErrors.Errors[0].Detail, " "))
 	}
-
-	return respBody, nil
 }

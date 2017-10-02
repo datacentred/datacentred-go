@@ -81,7 +81,7 @@ func TestProjectErrors(t *testing.T) {
 	defer r1.Stop()
 
 	_, err := FindProject("bogus")
-	assert.Equal(t, "Not found", err.Error(), "they should be equal")
+	assert.Equal(t, "404 Not Found.", err.Error(), "they should be equal")
 
 	params := map[string]string{
 		"name": "",
@@ -89,7 +89,7 @@ func TestProjectErrors(t *testing.T) {
 
 	newProject, err := CreateProject(params)
 	assert.Nil(t, newProject)
-	assert.Equal(t, "Project name too short.", err.Error(), "they should be equal")
+	assert.Equal(t, "422 Unprocessable Entity. Project name too short.", err.Error(), "they should be equal")
 
 	r2 := initRecorder("fixtures/project_errors2")
 	defer r2.Stop()
@@ -101,22 +101,22 @@ func TestProjectErrors(t *testing.T) {
 	newProject, _ = CreateProject(params)
 
 	_, err = newProject.AddUser("Boom!")
-	assert.Equal(t, "Not found", err.Error(), "they should be equal")
+	assert.Equal(t, "404 Not Found. No such user 'Boom!'", err.Error(), "they should be equal")
 
 	_, err = newProject.RemoveUser("Boom!")
-	assert.Equal(t, "Not found", err.Error(), "they should be equal")
+	assert.Equal(t, "404 Not Found. No such user 'Boom!'", err.Error(), "they should be equal")
 
 	newProject.Destroy()
 	newProject.Name = "Boom!"
 	_, err = newProject.Save()
-	assert.Equal(t, "Not found", err.Error(), "they should be equal")
+	assert.Equal(t, "404 Not Found.", err.Error(), "they should be equal")
 
 	r3 := initRecorder("fixtures/project_errors3")
 	defer r3.Stop()
 
 	_, err = newProject.Destroy()
-	assert.Equal(t, "Not found", err.Error(), "they should be equal")
+	assert.Equal(t, "404 Not Found.", err.Error(), "they should be equal")
 
 	_, err = newProject.Users()
-	assert.Equal(t, "Not found", err.Error(), "they should be equal")
+	assert.Equal(t, "404 Not Found. No such project '7a527a602e004ef8b7e0ace486b85e50'", err.Error(), "they should be equal")
 }

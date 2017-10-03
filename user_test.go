@@ -58,7 +58,7 @@ func TestUserErrors(t *testing.T) {
 	defer r1.Stop()
 
 	_, err := FindUser("bogus")
-	assert.Equal(t, "Not found", err.Error(), "they should be equal")
+	assert.Equal(t, "404 Not Found.", err.Error(), "they should be equal")
 
 	params := map[string]string{
 		"email": "",
@@ -66,7 +66,7 @@ func TestUserErrors(t *testing.T) {
 
 	newUser, err := CreateUser(params)
 	assert.Nil(t, newUser)
-	assert.Equal(t, "User email can't be blank.", err.Error(), "they should be equal")
+	assert.Equal(t, "422 Unprocessable Entity. User email can't be blank.", err.Error(), "they should be equal")
 
 	r2 := initRecorder("fixtures/user_errors2")
 	defer r2.Stop()
@@ -81,11 +81,11 @@ func TestUserErrors(t *testing.T) {
 	newUser.Destroy()
 	newUser.FirstName = "Boom!"
 	_, err = newUser.Save()
-	assert.Equal(t, "Not found", err.Error(), "they should be equal")
+	assert.Equal(t, "404 Not Found.", err.Error(), "they should be equal")
 
 	r3 := initRecorder("fixtures/user_errors3")
 	defer r3.Stop()
 
 	_, err = newUser.Destroy()
-	assert.Equal(t, "Not found", err.Error(), "they should be equal")
+	assert.Equal(t, "404 Not Found.", err.Error(), "they should be equal")
 }

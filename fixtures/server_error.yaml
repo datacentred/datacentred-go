@@ -1,0 +1,35 @@
+---
+version: 1
+rwmutex: {}
+interactions:
+- request:
+    body: ""
+    form: {}
+    headers:
+      Accept:
+      - application/vnd.datacentred.api+json; version=1
+      Authorization:
+      - Token token=access_key:secret_key
+      Content-Type:
+      - application/json
+      User-Agent:
+      - datacentred/go v1
+    url: https://my.datacentred.io/api/roles
+    method: POST
+  response:
+    body: ""
+    headers:
+      Content-Length:
+      - "0"
+      Content-Type:
+      - text/html; charset=utf-8
+      Date:
+      - Mon, 02 Oct 2017 09:52:34 GMT
+      Server:
+      - nginx/1.10.3
+      X-Request-Id:
+      - 5d11fdaa-9215-4f9c-9d10-e7c9f39ab3eb
+      X-Runtime:
+      - "0.119670"
+    status: 400 Bad Request
+    code: 400

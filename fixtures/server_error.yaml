@@ -9,7 +9,7 @@ interactions:
       Accept:
       - application/vnd.datacentred.api+json; version=1
       Authorization:
-      - Token token=1da0afb55bfad16fd3d6a688f9523d2b:9e4ab29e34b328951373b2367d274986
+      - Token token=access_key:secret_key
       Content-Type:
       - application/json
       User-Agent:

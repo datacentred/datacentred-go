@@ -11,5 +11,5 @@ func TestMiscServerErrors(t *testing.T) {
 
   _, err := Request("POST", "roles", nil)
 
-  assert.Equal(t, "Server returned 400 Bad Request.", err.Error(), "they should be the same")
+  assert.Equal(t, "400 Bad Request.", err.Error(), "they should be the same")
 }

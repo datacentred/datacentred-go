@@ -20,5 +20,5 @@ func TestUsageErrors(t *testing.T) {
 	defer r1.Stop()
 
 	_, err := FindUsage(1990, 5)
-	assert.Equal(t, "Not found", err.Error(), "they should be equal")
+	assert.Equal(t, "404 Not Found.", err.Error(), "they should be equal")
 }

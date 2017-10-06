@@ -90,7 +90,9 @@ func (u User) Destroy() (bool, error) {
 // ChangePassword allows a new password to be set for this user.
 func (u User) ChangePassword(Password string) (bool, error) {
 	user := map[string]interface{}{
-		"password": Password,
+		"user": map[string]string{
+			"password": Password,
+		},
 	}
 	jsonStr, _ := json.Marshal(user)
 	_, err := Request("PUT", "users/"+u.Id, jsonStr)

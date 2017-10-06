@@ -80,9 +80,9 @@ func Request(verb string, path string, body []byte) ([]byte, error) {
 	default:
 		var apiErrors apiErrorsResponse
 		err := json.Unmarshal(respBody, &apiErrors)
-		if(err != nil) {
-      return nil, errors.New(strings.Trim(resp.Status + ". " + string(respBody), " "))
+		if err != nil {
+			return nil, errors.New(strings.Trim(resp.Status+". "+string(respBody), " "))
 		}
-		return nil, errors.New(strings.Trim(resp.Status + ". " + apiErrors.Errors[0].Detail, " "))
+		return nil, errors.New(strings.Trim(resp.Status+". "+apiErrors.Errors[0].Detail, " "))
 	}
 }
